@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>404 | SafeQueue</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <style>
+        body {
+            background-color: #000;
+            color: var(--color-primary);
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 24px;
+        }
+        .terminal {
+            width: 100%;
+            max-width: 600px;
+            background: #111;
+            padding: 32px;
+            border: 1px solid #333;
+            font-family: var(--font-display);
+        }
+        .cursor {
+            display: inline-block;
+            width: 10px;
+            height: 1.2em;
+            background: var(--color-primary);
+            animation: blink 1s infinite;
+            vertical-align: middle;
+        }
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
+        }
+    </style>
+</head>
+<body>
+    <div class="terminal">
+        <p style="margin-bottom: 16px;">> ERROR_404: RESOURCE_NOT_FOUND</p>
+        <p style="margin-bottom: 16px;">> TRACE: Requested URL does not exist on this node.</p>
+        <p style="margin-bottom: 32px;">> SYSTEM_MESSAGE: The infrastructure is intact, but the specific log you are looking for has been purged or never existed.</p>
+        <p style="margin-bottom: 40px;">
+            <a href="index.html" style="color: #fff; text-decoration: underline;">[ RETURN_TO_ROOT ]</a>
+        </p>
+        <p>> INITIALIZING_RECOVERY...<span class="cursor"></span></p>
+    </div>
+</body>
+</html>

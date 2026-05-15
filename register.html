@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register | SafeQueue</title>
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+
+<body style="overflow-y: auto;">
+    <div class="auth-wrapper">
+        <div class="auth-card">
+            <div class="auth-header">
+                <a href="index.html" class="logo" style="justify-content: center; margin-bottom: 24px;">
+                    <i class="ph-bold ph-shield-check"></i>SAFE<span>QUEUE</span>
+                </a>
+                <h2 class="font-mono" style="font-size: 1rem;">CREATE_ACCOUNT</h2>
+            </div>
+            <form id="register-form">
+                <div class="form-group">
+                    <label for="name">Full Name</label>
+                    <input type="text" id="name" class="form-input" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" class="form-input" required>
+                </div>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <div class="password-input-wrapper" style="position: relative;">
+                        <input type="password" id="password" class="form-input" required minlength="8" style="padding-right: 48px;">
+                        <button type="button" class="toggle-password" style="position: absolute; right: 12px; top: 50%; transform: translateY(-50%); background: none; border: none; color: var(--text-secondary); cursor: pointer; padding: 4px;">
+                            <i class="ph ph-eye"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="confirm">Confirm Password</label>
+                    <div class="password-input-wrapper" style="position: relative;">
+                        <input type="password" id="confirm" class="form-input" required style="padding-right: 48px;">
+                        <button type="button" class="toggle-password" style="position: absolute; right: 12px; top: 50%; transform: translateY(-50%); background: none; border: none; color: var(--text-secondary); cursor: pointer; padding: 4px;">
+                            <i class="ph ph-eye"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="form-group" style="display: flex; gap: 8px; align-items: center;">
+                    <input type="checkbox" id="terms" required>
+                    <label for="terms" style="margin: 0; text-transform: none; cursor: pointer;">I accept the <a href="#" class="auth-link">Terms & Conditions</a> and <a href="#" class="auth-link">privacy policy</a></label>
+                </div>
+                <button type="submit" class="btn btn-primary" style="width: 100%;">Register</button>
+            </form>
+
+            <div class="auth-divider">or continue with</div>
+
+            <div class="social-auth">
+                <button class="btn google-btn"><i class="ph-bold ph-google-logo"></i> Google</button>
+                <button class="btn apple-btn"><i class="ph-bold ph-apple-logo"></i> Apple</button>
+            </div>
+
+            <p style="margin-top: 24px; text-align: center; font-size: 0.875rem; color: var(--text-secondary);">
+                Already have an account? <a href="login.html"
+                    style="color: var(--color-primary); font-weight: 600;">Login</a>
+            </p>
+        </div>
+    </div>
+    <script>
+        document.getElementById('register-form').addEventListener('submit', function (e) {
+            const pass = document.getElementById('password').value;
+            const confirm = document.getElementById('confirm').value;
+            if (pass !== confirm) {
+                e.preventDefault();
+                alert('Passwords do not match');
+            }
+        });
+    </script>
+    <script src="assets/js/main.js"></script>
+</body>
+
+</html>

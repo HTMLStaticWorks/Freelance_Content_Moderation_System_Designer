@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SafeQueue | System Architecture</title>
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/rtl.css">
+    <style>
+        /* Queue Pipeline Animation */
+        .pipeline-container {
+            width: 100%;
+            height: 300px;
+            background: var(--bg-secondary);
+            border: var(--border);
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+        }
+
+        .pipeline-node {
+            width: 60px;
+            height: 60px;
+            border: 2px solid var(--color-primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: var(--font-display);
+            font-size: 0.75rem;
+            background: var(--bg-primary);
+            z-index: 2;
+        }
+
+        .pipeline-path {
+            position: absolute;
+            height: 2px;
+            background: var(--border);
+            width: 100%;
+            top: 50%;
+            left: 0;
+            z-index: 1;
+        }
+
+        .data-packet {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background: var(--color-primary);
+            top: 50%;
+            left: -20px;
+            transform: translateY(-50%);
+            animation: movePacket 4s linear infinite;
+        }
+
+        @keyframes movePacket {
+            0% {
+                left: 0;
+                opacity: 0;
+            }
+
+            10% {
+                opacity: 1;
+            }
+
+            90% {
+                opacity: 1;
+            }
+
+            100% {
+                left: 100%;
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Navbar (Identical) -->
+    <nav class="navbar">
+        <div class="container">
+            <a href="index.html" class="logo">
+                <i class="ph-bold ph-shield-check"></i>
+                SAFE<span>QUEUE</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="index.html" class="nav-link">Home</a></li>
+                <li><a href="home2.html" class="nav-link active">Home 2</a></li>
+                <li><a href="services.html" class="nav-link">Services</a></li>
+                <li><a href="case-studies.html" class="nav-link">Case Studies</a></li>
+                <li><a href="blog.html" class="nav-link">Blog</a></li>
+                <li><a href="contact.html" class="nav-link">Contact</a></li>
+                <li><a href="dashboard.html" class="nav-link">Dashboard</a></li>
+            </ul>
+            <div class="nav-actions">
+                <button class="icon-btn theme-toggle"><i class="ph ph-moon"></i></button>
+                <button class="icon-btn rtl-toggle"><i class="ph ph-arrows-left-right"></i></button>
+                <a href="login.html" class="btn btn-primary">Login</a>
+                <button class="icon-btn hamburger-btn"><i class="ph ph-list"></i></button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Mobile Drawer -->
+    <div class="drawer-overlay"></div>
+    <div class="drawer">
+        <button class="icon-btn drawer-close" style="align-self: flex-end;"><i class="ph ph-x"></i></button>
+        <div class="drawer-links">
+            <a href="index.html" class="drawer-link">Home</a>
+            <a href="home2.html" class="drawer-link active">Home 2</a>
+            <a href="services.html" class="drawer-link">Services</a>
+            <a href="case-studies.html" class="drawer-link">Case Studies</a>
+            <a href="blog.html" class="drawer-link">Blog</a>
+            <a href="contact.html" class="drawer-link">Contact</a>
+            <a href="dashboard.html" class="drawer-link">Dashboard</a>
+            <a href="login.html" class="btn btn-primary" style="margin-top: 24px; text-align: center;">Login</a>
+        </div>
+    </div>
+
+    <main>
+        <!-- Split Hero Section -->
+        <section class="split-hero">
+            <div class="split-hero-content">
+                <span class="font-mono" style="color: var(--color-accent);">[ SYSTEM_VERSION_4.0 ]</span>
+                <h1 style="font-size: clamp(2rem, 8vw, 3.5rem); margin: 24px 0;">Automated Governance. Human Oversight.
+                </h1>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 32px; margin-bottom: 40px;">
+                    <div>
+                        <h2 style="font-size: 2.5rem; color: var(--color-primary);">99.8%</h2>
+                        <p class="font-mono" style="font-size: 0.75rem;">ACCURACY_RATE</p>
+                    </div>
+                    <div>
+                        <h2 style="font-size: 2.5rem; color: var(--color-primary);">&lt;15ms</h2>
+                        <p class="font-mono" style="font-size: 0.75rem;">LATENCY_THRESHOLD</p>
+                    </div>
+                </div>
+                <div style="display: flex; gap: 16px; flex-wrap: wrap; justify-content: center;">
+                    <a href="dashboard.html" class="btn btn-primary">Launch Dashboard</a>
+                    <a href="contact.html" class="btn btn-outline">Request Specs</a>
+                </div>
+            </div>
+            <div class="split-hero-visual">
+                <div style="width: 100%; max-width: 500px;">
+                    <div class="pipeline-container">
+                        <div class="pipeline-path"></div>
+                        <div class="data-packet" style="animation-delay: 0s;"></div>
+                        <div class="data-packet" style="animation-delay: 1s;"></div>
+                        <div class="data-packet" style="animation-delay: 2s;"></div>
+                        <div class="pipeline-node">INGEST</div>
+                        <div class="pipeline-node">SCAN</div>
+                        <div class="pipeline-node">ROUTE</div>
+                        <div class="pipeline-node">AUDIT</div>
+                    </div>
+                    <p class="font-mono"
+                        style="text-align: center; margin-top: 24px; font-size: 0.75rem; color: var(--text-secondary);">
+                        LIVE_PIPELINE_VISUALIZATION // STATUS: ACTIVE
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Features Section -->
+        <section>
+            <div class="container">
+                <div class="section-header">
+                    <h2>Engineered for Scale</h2>
+                    <p>Designed for platforms handling 1M+ daily submissions.</p>
+                </div>
+                <div class="card-grid features-grid">
+
+                    <div class="card"
+                        style="padding: 0; align-items: stretch; text-align: center; overflow: hidden; display: flex; flex-direction: column;">
+                        <img src="assets/images/fail-safe.jpg" alt="Fail-Safe Logic"
+                            style="width: 100%; height: 200px; object-fit: cover;">
+                        <div
+                            style="padding: 32px; display: flex; flex-direction: column; flex: 1; align-items: center;">
+                            <h3 style="margin-bottom: 12px;">Fail-Safe Logic</h3>
+                            <p>Redundant rule engines prevent catastrophic policy leakage during spikes.</p>
+                        </div>
+                    </div>
+
+                    <div class="card"
+                        style="padding: 0; align-items: stretch; text-align: center; overflow: hidden; display: flex; flex-direction: column;">
+                        <img src="assets/images/edge-processing.jpg" alt="Edge Processing"
+                            style="width: 100%; height: 200px; object-fit: cover;">
+                        <div
+                            style="padding: 32px; display: flex; flex-direction: column; flex: 1; align-items: center;">
+                            <h3 style="margin-bottom: 12px;">Edge Processing</h3>
+                            <p>Real-time detection at the point of ingest for high-risk categories.</p>
+                        </div>
+                    </div>
+
+                    <div class="card"
+                        style="padding: 0; align-items: stretch; text-align: center; overflow: hidden; display: flex; flex-direction: column;">
+                        <img src="assets/images/reviewer-ergonomics.jpg" alt="Reviewer Ergonomics"
+                            style="width: 100%; height: 200px; object-fit: cover;">
+                        <div
+                            style="padding: 32px; display: flex; flex-direction: column; flex: 1; align-items: center;">
+                            <h3 style="margin-bottom: 12px;">Reviewer Ergonomics</h3>
+                            <p>Interfaces designed to reduce decision fatigue and secondary trauma.</p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+        <!-- Global Coverage -->
+        <section style="border-top: var(--border); background-color: var(--bg-secondary);">
+            <div class="container">
+                <div class="section-header">
+                    <span class="font-mono" style="color: var(--color-primary);">[ GLOBAL_DEPLOYMENT ]</span>
+                    <h2 style="margin-top: 16px;">Deployed in 14 Countries</h2>
+                    <p>Mission-critical moderation infrastructure operating across every major region.</p>
+                </div>
+
+                <div style="position: relative; margin-bottom: 0;">
+                    <img src="assets/images/global-map.jpg" alt="Global Deployment Map"
+                        style="width: 100%; height: 480px; object-fit: cover; border: var(--border); display: block;">
+                    <div
+                        style="position: absolute; top: 24px; left: 24px; background-color: var(--bg-primary); border: var(--border); padding: 12px 20px;">
+                        <span class="font-mono" style="font-size: 0.65rem; color: var(--color-primary);">●
+                            LIVE_DEPLOYMENTS_ACTIVE</span>
+                    </div>
+                </div>
+
+                <div class="map-stats-container">
+                    <div class="map-stat">
+                        <div class="map-stat-number">14</div>
+                        <div class="map-stat-label">// COUNTRIES</div>
+                    </div>
+                    <div class="map-stat">
+                        <div class="map-stat-number">38</div>
+                        <div class="map-stat-label">// PLATFORMS</div>
+                    </div>
+                    <div class="map-stat">
+                        <div class="map-stat-number">2.4B</div>
+                        <div class="map-stat-label">// ITEMS_REVIEWED</div>
+                    </div>
+                    <div class="map-stat">
+                        <div class="map-stat-number">99.8%</div>
+                        <div class="map-stat-label">// UPTIME_SLA</div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Stats Section -->
+        <section style="border-bottom: var(--border);">
+            <div class="container">
+                <div class="stats-grid">
+
+                    <div class="stat-card">
+                        <div class="stat-number" data-target="99.8">0</div>
+                        <div class="stat-label">// ACCURACY_RATE</div>
+                        <p class="stat-desc">AI detection precision across all content categories and regions.</p>
+                    </div>
+
+                    <div class="stat-card">
+                        <div class="stat-number" data-target="15">0</div>
+                        <div class="stat-label">// LATENCY_MS</div>
+                        <p class="stat-desc">Average queue processing time from ingest to reviewer assignment.</p>
+                    </div>
+
+                    <div class="stat-card">
+                        <div class="stat-number" data-target="40">0</div>
+                        <div class="stat-label">// FALSE_POSITIVE_DROP</div>
+                        <p class="stat-desc">Reduction in manual appeals after toxicity threshold calibration.</p>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+        <!-- Case Studies -->
+        <section style="background-color: var(--bg-secondary); border-top: var(--border);">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Infrastructure Logs</h2>
+                    <p>Documented outcomes from mission-critical audits.</p>
+                </div>
+                <div class="card-grid">
+
+                    <div class="card"
+                        style="padding: 0; align-items: stretch; text-align: center; overflow: hidden; display: flex; flex-direction: column; border-radius: 0;">
+                        <img src="assets/images/sla-recovery.jpg" alt="SLA Recovery"
+                            style="width: 100%; height: 280px; object-fit: cover;">
+                        <div
+                            style="padding: 32px; display: flex; flex-direction: column; flex: 1; align-items: center;">
+                            <h4 class="font-mono" style="color: var(--color-primary);">CASE_01</h4>
+                            <h3 style="margin: 16px 0;">SLA Recovery</h3>
+                            <p>Rescuing a 48-hour backlog for a Tier 1 platform through priority queue restructuring.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="card"
+                        style="padding: 0; align-items: stretch; text-align: center; overflow: hidden; display: flex; flex-direction: column; border-radius: 0;">
+                        <img src="assets/images/bias-mitigation.jpg" alt="Bias Mitigation"
+                            style="width: 100%; height: 280px; object-fit: cover;">
+                        <div
+                            style="padding: 32px; display: flex; flex-direction: column; flex: 1; align-items: center;">
+                            <h4 class="font-mono" style="color: var(--color-primary);">CASE_02</h4>
+                            <h3 style="margin: 16px 0;">Bias Mitigation</h3>
+                            <p>Auditing AI classifiers to eliminate systemic over-enforcement in regional dialects.</p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- How We Work -->
+        <section style="border-top: var(--border);">
+            <div class="container">
+                <div class="section-header">
+                    <span class="font-mono" style="color: var(--color-primary);">[ PROCESS_OVERVIEW ]</span>
+                    <h2 style="margin-top: 16px;">How We Work</h2>
+                    <p>A structured four-phase engagement model built for platform scale.</p>
+                </div>
+
+                <img src="assets/images/how-we-work.jpg" alt="How We Work"
+                    style="width: 100%; height: 480px; object-fit: cover; border: var(--border); margin-bottom: 0;">
+
+                <div class="process-container">
+
+                    <div class="process-step">
+                        <span class="process-num">01 // AUDIT</span>
+                        <h4 class="process-title">System Audit</h4>
+                        <p class="process-desc">Deep diagnostic of your existing moderation stack, queues, and policy
+                            gaps.</p>
+                    </div>
+
+                    <div class="process-step">
+                        <span class="process-num">02 // DESIGN</span>
+                        <h4 class="process-title">Infrastructure Design</h4>
+                        <p class="process-desc">Custom architecture blueprints tailored to your platform scale and
+                            policy needs.</p>
+                    </div>
+
+                    <div class="process-step">
+                        <span class="process-num">03 // DEPLOY</span>
+                        <h4 class="process-title">Deployment</h4>
+                        <p class="process-desc">Structured rollout with live monitoring and threshold calibration at
+                            every stage.</p>
+                    </div>
+
+                    <div class="process-step">
+                        <span class="process-num">04 // MONITOR</span>
+                        <h4 class="process-title">Continuous Monitor</h4>
+                        <p class="process-desc">Ongoing performance tracking, auditing, and policy maintenance
+                            post-launch.</p>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA -->
+        <section
+            style="text-align: center; border-top: var(--border); background-color: var(--color-primary); color: #000;">
+            <div class="container">
+                <span class="font-mono" style="font-size: 0.75rem; letter-spacing: 0.15em;">[ READY_TO_DEPLOY ]</span>
+                <h2 style="font-size: clamp(2rem, 6vw, 3rem); margin: 24px 0;">Initialize System Integration</h2>
+                <p style="font-size: 1.25rem; max-width: 600px; margin: 0 auto 16px; ">
+                    Your moderation infrastructure is only as strong as its weakest queue. Let's find it together.
+                </p>
+                <p style="font-size: 0.875rem; max-width: 500px; margin: 0 auto 40px; opacity: 0.7;">
+                    We work with platform architects, trust & safety leads, and policy teams at companies handling 1M+
+                    daily content submissions.
+                </p>
+                <div style="display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;">
+                    <a href="contact.html" class="btn cta-btn">Connect with us</a>
+                    <a href="case-studies.html" class="btn"
+                        style="background-color: transparent; border: 2px solid #000; color: #000; transition: background-color 0.3s ease, color 0.3s ease;"
+                        onmouseover="this.style.backgroundColor='#000'; this.style.color='#fff';"
+                        onmouseout="this.style.backgroundColor='transparent'; this.style.color='#000';">View Case
+                        Studies</a>
+                </div>
+                <p class="font-mono" style="font-size: 0.65rem; margin-top: 40px; opacity: 0.5; letter-spacing: 0.1em;">
+                    SAFEQUEUE_INFRASTRUCTURE_GROUP // DISTRIBUTED_OPERATIONS // EST_2021</p>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer (Identical) -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <a href="index.html" class="logo" style="margin-bottom: 24px;">
+                        <i class="ph-bold ph-shield-check"></i>
+                        SAFE<span>QUEUE</span>
+                    </a>
+                    <p style="color: var(--text-secondary); font-size: 0.875rem;">Mission-critical infrastructure for
+                        the modern platform.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>PLATFORM</h4>
+                    <ul class="footer-links">
+                        <li><a href="services.html" class="footer-link">Services</a></li>
+                        <li><a href="case-studies.html" class="footer-link">Case Studies</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>COMPANY</h4>
+                    <ul class="footer-links">
+                        <li><a href="about.html" class="footer-link">About</a></li>
+                        <li><a href="contact.html" class="footer-link">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>LEGAL</h4>
+                    <ul class="footer-links">
+                        <li><a href="#" class="footer-link">Privacy Policy</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 SAFEQUEUE INFRASTRUCTURE GROUP. ALL_RIGHTS_RESERVED.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="assets/js/main.js"></script>
+</body>
+
+</html>

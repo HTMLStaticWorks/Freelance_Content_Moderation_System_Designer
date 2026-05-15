@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Launching Soon | SafeQueue</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <style>
+        body {
+            background-color: var(--bg-primary);
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 24px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container" style="max-width: 600px;">
+        <span class="font-mono" style="color: var(--color-primary);">[ SYSTEM_DEPLOYMENT_IN_PROGRESS ]</span>
+        <h1 style="font-size: 3rem; margin: 24px 0;">SafeQueue is Loading.</h1>
+        <p style="margin-bottom: 48px; color: var(--text-secondary);">The moderation infrastructure platform is currently undergoing final stress testing. Launching soon for global Trust & Safety teams.</p>
+        
+        <div id="countdown" class="font-mono" style="font-size: 2.5rem; margin-bottom: 48px; display: flex; justify-content: center; gap: 24px;">
+            <div><span id="days">00</span><p style="font-size: 0.75rem;">DAYS</p></div>
+            <div><span id="hours">00</span><p style="font-size: 0.75rem;">HRS</p></div>
+            <div><span id="minutes">00</span><p style="font-size: 0.75rem;">MINS</p></div>
+        </div>
+
+        <div style="background: var(--bg-secondary); padding: 32px; border: var(--border);">
+            <p style="margin-bottom: 16px; font-size: 0.875rem;">Join the waitlist for early access.</p>
+            <form style="display: flex; gap: 8px;">
+                <input type="email" placeholder="email@organization.infra" class="form-input" style="flex: 1;">
+                <button type="submit" class="btn btn-primary">Initialize</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        // Simple countdown
+        const targetDate = new Date().getTime() + (14 * 24 * 60 * 60 * 1000);
+        setInterval(() => {
+            const now = new Date().getTime();
+            const distance = targetDate - now;
+            document.getElementById('days').innerText = Math.floor(distance / (1000 * 60 * 60 * 24)).toString().padStart(2, '0');
+            document.getElementById('hours').innerText = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)).toString().padStart(2, '0');
+            document.getElementById('minutes').innerText = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60)).toString().padStart(2, '0');
+        }, 1000);
+    </script>
+</body>
+</html>

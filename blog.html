@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog | SafeQueue</title>
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/rtl.css">
+</head>
+
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <a href="index.html" class="logo"><i class="ph-bold ph-shield-check"></i>SAFE<span>QUEUE</span></a>
+            <ul class="nav-links">
+                <li><a href="index.html" class="nav-link">Home</a></li>
+                <li><a href="home2.html" class="nav-link">Home 2</a></li>
+                <li><a href="services.html" class="nav-link">Services</a></li>
+                <li><a href="case-studies.html" class="nav-link">Case Studies</a></li>
+                <li><a href="blog.html" class="nav-link active">Blog</a></li>
+                <li><a href="contact.html" class="nav-link">Contact</a></li>
+                <li><a href="dashboard.html" class="nav-link">Dashboard</a></li>
+            </ul>
+            <div class="nav-actions">
+                <button class="icon-btn theme-toggle"><i class="ph ph-moon"></i></button>
+                <button class="icon-btn rtl-toggle"><i class="ph ph-arrows-left-right"></i></button>
+                <a href="login.html" class="btn btn-primary">Login</a>
+                <button class="icon-btn hamburger-btn"><i class="ph ph-list"></i></button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Mobile Drawer -->
+    <div class="drawer-overlay"></div>
+    <div class="drawer">
+        <button class="icon-btn drawer-close" style="align-self: flex-end;"><i class="ph ph-x"></i></button>
+        <div class="drawer-links">
+            <a href="index.html" class="drawer-link">Home</a>
+            <a href="home2.html" class="drawer-link">Home 2</a>
+            <a href="services.html" class="drawer-link">Services</a>
+            <a href="case-studies.html" class="drawer-link">Case Studies</a>
+            <a href="blog.html" class="drawer-link active">Blog</a>
+            <a href="contact.html" class="drawer-link">Contact</a>
+            <a href="dashboard.html" class="drawer-link">Dashboard</a>
+            <a href="login.html" class="btn btn-primary" style="margin-top: 24px; text-align: center;">Login</a>
+        </div>
+    </div>
+
+    <main style="padding-top: 120px;">
+        <section>
+            <div class="container">
+                <div class="section-header">
+                    <span class="font-mono" style="color: var(--color-primary);">[ POLICY_INSIGHTS ]</span>
+                    <h1 style="margin: 16px 0;">Trust & Safety Strategy</h1>
+                    <p>Analysis on content moderation infrastructure, AI ethics, and platform policy.</p>
+                </div>
+
+                <div class="card-grid">
+
+                    <article class="card"
+                        style="padding: 0; align-items: stretch; text-align: center; overflow: hidden; display: flex; flex-direction: column;">
+                        <img src="assets/images/blog-zero-tolerance.jpg" alt="Policy Article"
+                            style="width: 100%; height: 260px; object-fit: cover; object-position: top;">
+                        <div
+                            style="padding: 32px; display: flex; flex-direction: column; flex: 1; align-items: center;">
+                            <span class="font-mono" style="font-size: 0.75rem; color: var(--color-primary);">[ POLICY
+                                ]</span>
+                            <h3 style="margin: 12px 0;"><a href="blog-single.html">The End of "Zero Tolerance"</a></h3>
+                            <p style="margin-bottom: 24px; flex: 1;">Why binary moderation logic is failing global
+                                platforms and what comes next.</p>
+                            <a href="blog-single.html" class="read-logs-link">READ_POST <i
+                                    class="ph ph-arrow-right"></i></a>
+                        </div>
+                    </article>
+
+                    <article class="card"
+                        style="padding: 0; align-items: stretch; text-align: center; overflow: hidden; display: flex; flex-direction: column;">
+                        <img src="assets/images/blog-classifier.jpg" alt="AI Safety"
+                            style="width: 100%; height: 260px; object-fit: cover; object-position: top;">
+                        <div
+                            style="padding: 32px; display: flex; flex-direction: column; flex: 1; align-items: center;">
+                            <span class="font-mono" style="font-size: 0.75rem; color: var(--color-primary);">[ AI_SAFETY
+                                ]</span>
+                            <h3 style="margin: 12px 0;"><a href="blog-single.html">Auditing the Classifier</a></h3>
+                            <p style="margin-bottom: 24px; flex: 1;">A technical framework for measuring systemic bias
+                                in toxicity models.</p>
+                            <a href="blog-single.html" class="read-logs-link">READ_POST <i
+                                    class="ph ph-arrow-right"></i></a>
+                        </div>
+                    </article>
+
+                    <article class="card"
+                        style="padding: 0; align-items: stretch; text-align: center; overflow: hidden; display: flex; flex-direction: column;">
+                        <img src="assets/images/blog-latency.jpg" alt="Queue Ops"
+                            style="width: 100%; height: 260px; object-fit: cover; object-position: top;">
+                        <div
+                            style="padding: 32px; display: flex; flex-direction: column; flex: 1; align-items: center;">
+                            <span class="font-mono" style="font-size: 0.75rem; color: var(--color-primary);">[ QUEUE_OPS
+                                ]</span>
+                            <h3 style="margin: 12px 0;"><a href="blog-single.html">Latency as a Policy Metric</a></h3>
+                            <p style="margin-bottom: 24px; flex: 1;">How review speed directly impacts platform safety
+                                outcomes.</p>
+                            <a href="blog-single.html" class="read-logs-link">READ_POST <i
+                                    class="ph ph-arrow-right"></i></a>
+                        </div>
+                    </article>
+
+                    <article class="card"
+                        style="padding: 0; align-items: stretch; text-align: center; overflow: hidden; display: flex; flex-direction: column;">
+                        <img src="assets/images/blog-escalation.jpg" alt="Escalation Design"
+                            style="width: 100%; height: 260px; object-fit: cover; object-position: top;">
+                        <div
+                            style="padding: 32px; display: flex; flex-direction: column; flex: 1; align-items: center;">
+                            <span class="font-mono" style="font-size: 0.75rem; color: var(--color-primary);">[
+                                ESCALATION ]</span>
+                            <h3 style="margin: 12px 0;"><a href="blog-single.html">Designing For The Worst Case</a></h3>
+                            <p style="margin-bottom: 24px; flex: 1;">How fail-safe escalation logic protects platforms
+                                during high-severity content surges.</p>
+                            <a href="blog-single.html" class="read-logs-link">READ_POST <i
+                                    class="ph ph-arrow-right"></i></a>
+                        </div>
+                    </article>
+
+                    <article class="card"
+                        style="padding: 0; align-items: stretch; text-align: center; overflow: hidden; display: flex; flex-direction: column;">
+                        <img src="assets/images/blog-reviewer.jpg" alt="Reviewer Wellness"
+                            style="width: 100%; height: 260px; object-fit: cover; object-position: top;">
+                        <div
+                            style="padding: 32px; display: flex; flex-direction: column; flex: 1; align-items: center;">
+                            <span class="font-mono" style="font-size: 0.75rem; color: var(--color-primary);">[
+                                REVIEWER_OPS ]</span>
+                            <h3 style="margin: 12px 0;"><a href="blog-single.html">The Hidden Cost of Decision
+                                    Fatigue</a></h3>
+                            <p style="margin-bottom: 24px; flex: 1;">Why reviewer burnout is a policy problem, not just
+                                an HR problem.</p>
+                            <a href="blog-single.html" class="read-logs-link">READ_POST <i
+                                    class="ph ph-arrow-right"></i></a>
+                        </div>
+                    </article>
+
+                    <article class="card"
+                        style="padding: 0; align-items: stretch; text-align: center; overflow: hidden; display: flex; flex-direction: column;">
+                        <img src="assets/images/blog-taxonomy.jpg" alt="Policy Taxonomy"
+                            style="width: 100%; height: 260px; object-fit: cover; object-position: top;">
+                        <div
+                            style="padding: 32px; display: flex; flex-direction: column; flex: 1; align-items: center;">
+                            <span class="font-mono" style="font-size: 0.75rem; color: var(--color-primary);">[
+                                POLICY_DESIGN ]</span>
+                            <h3 style="margin: 12px 0;"><a href="blog-single.html">Building a Violation Taxonomy</a>
+                            </h3>
+                            <p style="margin-bottom: 24px; flex: 1;">A step-by-step guide to structuring content
+                                categories that scale across regions.</p>
+                            <a href="blog-single.html" class="read-logs-link">READ_POST <i
+                                    class="ph ph-arrow-right"></i></a>
+                        </div>
+                    </article>
+
+                </div>
+            <!-- FAQ Section -->
+        <section style="background-color: var(--bg-secondary); border-top: var(--border);">
+            <div class="container">
+                <div class="section-header">
+                    <span class="font-mono" style="color: var(--color-primary);">[ KNOWLEDGE_BASE ]</span>
+                    <h2 style="margin-top: 16px;">Frequently Asked Questions</h2>
+                    <p>Common inquiries regarding trust & safety infrastructure and strategy.</p>
+                </div>
+
+                <div class="faq-container">
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+                            <h4>How often should we audit our moderation taxonomy?</h4>
+                            <i class="ph ph-caret-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>We recommend a full deep-dive audit every 6 months, or immediately following a major
+                                platform policy change. Regional modifiers should be reviewed quarterly to ensure they
+                                remain aligned with local legal standards.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+                            <h4>What is the ideal ratio between AI and human review?</h4>
+                            <i class="ph ph-caret-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>There is no "ideal" ratio, but high-performing systems typically automate 95%+ of low-risk
+                                content, reserving human review for high-severity, high-ambiguity, or appealed
+                                decisions. The goal is to maximize AI efficiency without sacrificing accuracy.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+                            <h4>How do you handle secondary trauma for human reviewers?</h4>
+                            <i class="ph ph-caret-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Our infrastructure designs prioritize "Reviewer Ergonomics." This includes grayscale
+                                viewing modes, automated blurring of graphic content, strictly enforced shift rotations,
+                                and integrated wellness tracking within the moderation dashboard.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-bottom">
+                <p>&copy; 2024 SAFEQUEUE INFRASTRUCTURE GROUP. ALL_RIGHTS_RESERVED.</p>
+            </div>
+        </div>
+    </footer>
+    <script src="assets/js/main.js"></script>
+</body>
+
+</html>

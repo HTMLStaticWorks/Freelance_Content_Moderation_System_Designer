@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SafeQueue | Industrial Content Moderation System Design</title>
+    <meta name="description"
+        content="SafeQueue provides mission-critical content moderation infrastructure and hybrid human-AI workflow design for platform safety.">
+
+    <!-- Fonts & Icons -->
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/rtl.css">
+</head>
+
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="container">
+            <a href="index.html" class="logo">
+                <i class="ph-bold ph-shield-check"></i>
+                SAFE<span>QUEUE</span>
+            </a>
+
+            <ul class="nav-links">
+                <li><a href="index.html" class="nav-link active">Home</a></li>
+                <li><a href="home2.html" class="nav-link">Home 2</a></li>
+                <li><a href="services.html" class="nav-link">Services</a></li>
+                <li><a href="case-studies.html" class="nav-link">Case Studies</a></li>
+
+                <li><a href="blog.html" class="nav-link">Blog</a></li>
+                <li><a href="contact.html" class="nav-link">Contact</a></li>
+                <li><a href="dashboard.html" class="nav-link">Dashboard</a></li>
+            </ul>
+
+            <div class="nav-actions">
+                <button class="icon-btn theme-toggle" aria-label="Toggle Theme">
+                    <i class="ph ph-moon"></i>
+                </button>
+                <button class="icon-btn rtl-toggle" aria-label="Toggle RTL">
+                    <i class="ph ph-arrows-left-right"></i>
+                </button>
+                <a href="login.html" class="btn btn-primary">Login</a>
+                <button class="icon-btn hamburger-btn" aria-label="Open Menu">
+                    <i class="ph ph-list"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Mobile Drawer -->
+    <div class="drawer-overlay"></div>
+    <div class="drawer">
+        <button class="icon-btn drawer-close" style="align-self: flex-end;">
+            <i class="ph ph-x"></i>
+        </button>
+        <div class="drawer-links">
+            <a href="index.html" class="drawer-link active">Home</a>
+            <a href="home2.html" class="drawer-link">Home 2</a>
+            <a href="services.html" class="drawer-link">Services</a>
+            <a href="case-studies.html" class="drawer-link">Case Studies</a>
+            <a href="blog.html" class="drawer-link">Blog</a>
+            <a href="contact.html" class="drawer-link">Contact</a>
+            <a href="dashboard.html" class="drawer-link">Dashboard</a>
+            <a href="login.html" class="btn btn-primary" style="margin-top: 24px; text-align: center;">Login</a>
+        </div>
+        <div class="drawer-actions" style="margin-top: auto; display: flex; gap: 16px;">
+            <button class="icon-btn theme-toggle"><i class="ph ph-moon"></i></button>
+            <button class="icon-btn rtl-toggle"><i class="ph ph-arrows-left-right"></i></button>
+        </div>
+    </div>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="hero"
+            style="min-height: 90vh; display: flex; align-items: center; background-color: var(--bg-primary); border-bottom: var(--border);">
+            <div class="container">
+                <div style="max-width: 800px; margin: 0 auto; text-align: center;">
+                    <p class="font-mono hero-tag"
+                        style="color: var(--color-primary); margin-bottom: 16px; font-size: clamp(0.75rem, 4vw, 1rem);">
+                        [
+                        MISSION_CRITICAL_INFRASTRUCTURE ]</p>
+                    <h1 class="hero-title"
+                        style="font-size: clamp(1.8rem, 8vw, 4.5rem); line-height: 1.1; margin-bottom: 24px;">
+                        Engineering Safety for <br>
+                        <span class="typewriter-text" id="typewriter"></span>
+                    </h1>
+                    <p
+                        style="font-size: 1.25rem; color: var(--text-secondary); margin-bottom: 40px; max-width: 600px; margin-left: auto; margin-right: auto;">
+                        High-precision moderation systems designed for the scale of modern discourse.
+                        We build the rules that keep platforms human.
+                    </p>
+                    <div style="display: flex; gap: 16px; flex-wrap: wrap; justify-content: center;">
+                        <a href="services.html" class="btn btn-primary" style="width: 200px;">System Audit</a>
+                        <a href="case-studies.html" class="btn btn-outline" style="width: 200px;">View
+                            Infra</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Services Overview -->
+        <section class="services">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Core Capabilities</h2>
+                    <p>Standardized solutions for non-standard governance challenges.</p>
+                </div>
+                <div class="card-grid">
+                    <div class="card" style="padding: 0; align-items: stretch; text-align: center; overflow: hidden;">
+                        <img src="assets/images/rule-engine.jpg" alt="Rule Engine Design"
+                            style="width: 100%; height: 200px; object-fit: cover;">
+                        <div style="padding: 32px;">
+                            <h3 style="margin-bottom: 12px;">Rule Engine Design</h3>
+                            <p>Precise policy translation into machine-executable logic with zero-drift thresholds.</p>
+                        </div>
+                    </div>
+                    <div class="card" style="padding: 0; align-items: stretch; text-align: center; overflow: hidden;">
+                        <img src="assets/images/queue-architecture.jpg" alt="Queue Architecture"
+                            style="width: 100%; height: 200px; object-fit: cover;">
+                        <div style="padding: 32px;">
+                            <h3 style="margin-bottom: 12px;">Queue Architecture</h3>
+                            <p>High-throughput routing systems optimized for latency and reviewer mental load.</p>
+                        </div>
+                    </div>
+                    <div class="card" style="padding: 0; align-items: stretch; text-align: center; overflow: hidden;">
+                        <img src="assets/images/false-positive.jpg" alt="False Positive Auditing"
+                            style="width: 100%; height: 200px; object-fit: cover;">
+                        <div style="padding: 32px;">
+                            <h3 style="margin-bottom: 12px;">False Positive Auditing</h3>
+                            <p>Retrospective analysis pipelines to calibrate detection and reduce collateral damage.</p>
+                        </div>
+                    </div>
+                    <div class="card" style="padding: 0; align-items: stretch; text-align: center; overflow: hidden;">
+                        <img src="assets/images/hybrid-workflows.jpg" alt="Hybrid Workflows"
+                            style="width: 100%; height: 200px; object-fit: cover;">
+                        <div style="padding: 32px;">
+                            <h3 style="margin-bottom: 12px;">Hybrid Workflows</h3>
+                            <p>Seamless orchestration between AI detection and human nuance for sensitive escalations.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="card" style="padding: 0; align-items: stretch; text-align: center; overflow: hidden;">
+                        <img src="assets/images/policy-docs.jpg" alt="Policy Docs"
+                            style="width: 100%; height: 200px; object-fit: cover;">
+                        <div style="padding: 32px;">
+                            <h3 style="margin-bottom: 12px;">Policy Docs</h3>
+                            <p>Comprehensive violation taxonomies and decision trees for multi-regional compliance.</p>
+                        </div>
+                    </div>
+                    <div class="card" style="padding: 0; align-items: stretch; text-align: center; overflow: hidden;">
+                        <img src="assets/images/escalation-design.jpg" alt="Escalation Design"
+                            style="width: 100%; height: 200px; object-fit: cover;">
+                        <div style="padding: 32px;">
+                            <h3 style="margin-bottom: 12px;">Escalation Design</h3>
+                            <p>Fail-safe routing for high-severity events and emergency policy deployments.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About / Mission -->
+        <section
+            style="background-color: var(--bg-secondary); border-top: var(--border); border-bottom: var(--border);">
+            <div class="container"
+                style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 48px; align-items: center;">
+                <div>
+                    <img src="assets/images/governance-crisis.jpg" alt="The Governance Crisis"
+                        style="border: var(--border); border-radius: var(--radius);">
+                </div>
+                <div style="text-align: center;">
+                    <h2 style="font-size: 2.5rem; margin-bottom: 24px;">The Governance Crisis</h2>
+                    <p style="margin-bottom: 24px;">
+                        Content moderation is no longer a simple filter. It is the governance infrastructure of the
+                        digital age. SafeQueue was founded on the belief that moderation systems must be as robust as
+                        the financial systems they resemble.
+                    </p>
+                    <p style="margin-bottom: 32px; color: var(--text-secondary);">
+                        We serve platform architects and policy leads who require more than "good enough." Our designs
+                        prioritize auditability, scalability, and human-centered ergonomics.
+                    </p>
+                    <a href="about.html" class="btn btn-outline">Full Philosophy</a>
+                </div>
+            </div>
+        </section>
+        <!-- Platform Features -->
+        <section>
+            <div class="container">
+                <div class="section-header">
+                    <h2>Infrastructure Standards</h2>
+                    <p>Enterprise-grade features built into every deployment.</p>
+                </div>
+                <div class="grid-3-col">
+
+                    <div class="feat-card">
+                        <span class="feat-num">01 // MONITORING</span>
+                        <h4 class="feat-title">Real-time Metrics</h4>
+                        <p class="feat-desc">Live queue monitoring and volume forecasting.</p>
+                    </div>
+                    <div class="feat-card">
+                        <span class="feat-num">02 // CONFIGURATION</span>
+                        <h4 class="feat-title">Dynamic Thresholds</h4>
+                        <p class="feat-desc">Configurable toxicity levels per region.</p>
+                    </div>
+                    <div class="feat-card">
+                        <span class="feat-num">03 // ROUTING</span>
+                        <h4 class="feat-title">Multi-tier Escalation</h4>
+                        <p class="feat-desc">Automated routing to senior reviewers.</p>
+                    </div>
+                    <div class="feat-card">
+                        <span class="feat-num">04 // COMPLIANCE</span>
+                        <h4 class="feat-title">Audit Trail Export</h4>
+                        <p class="feat-desc">Immutable logs for legal compliance.</p>
+                    </div>
+                    <div class="feat-card">
+                        <span class="feat-num">05 // INTEGRATION</span>
+                        <h4 class="feat-title">API-Ready</h4>
+                        <p class="feat-desc">Seamless integration with existing stacks.</p>
+                    </div>
+                    <div class="feat-card">
+                        <span class="feat-num">06 // SECURITY</span>
+                        <h4 class="feat-title">RBAC Security</h4>
+                        <p class="feat-desc">Granular access control for review teams.</p>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+        <!-- Portfolio Preview -->
+        <section style="background-color: var(--bg-secondary); border-top: var(--border);">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Case Studies</h2>
+                    <p>Recent deployments in trust & safety infrastructure.</p>
+                </div>
+                <div class="card-grid portfolio-grid">
+                    <div class="card"
+                        style="padding: 0; align-items: stretch; text-align: center; overflow: hidden; display: flex; flex-direction: column;">
+                        <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=800"
+                            alt="Data Audit" style="width: 100%; height: 200px; object-fit: cover;">
+                        <div
+                            style="padding: 32px; display: flex; flex-direction: column; flex: 1; align-items: center;">
+                            <span class="font-mono" style="font-size: 0.75rem; color: var(--color-primary);">[
+                                POLICY_AUDIT ]</span>
+                            <h3 style="margin: 12px 0;">Taxonomy Redesign</h3>
+                            <p style="margin-bottom: 24px; flex: 1;">Reducing ambiguity in hate speech detection logic
+                                for a global social network.</p>
+                            <a href="case-studies.html" class="read-logs-link">READ_LOGS <i
+                                    class="ph ph-arrow-right"></i></a>
+                        </div>
+                    </div>
+                    <div class="card"
+                        style="padding: 0; align-items: stretch; text-align: center; overflow: hidden; display: flex; flex-direction: column;">
+                        <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=800"
+                            alt="Workflow Graph" style="width: 100%; height: 200px; object-fit: cover;">
+                        <div
+                            style="padding: 32px; display: flex; flex-direction: column; flex: 1; align-items: center;">
+                            <span class="font-mono" style="font-size: 0.75rem; color: var(--color-primary);">[
+                                WORKFLOW_ENG ]</span>
+                            <h3 style="margin: 12px 0;">Hybrid SLA Optimization</h3>
+                            <p style="margin-bottom: 24px; flex: 1;">Implementing a 3-tier escalation ladder for
+                                misinformation review during elections.</p>
+                            <a href="case-studies.html" class="read-logs-link">READ_LOGS <i
+                                    class="ph ph-arrow-right"></i></a>
+                        </div>
+                    </div>
+                    <div class="card"
+                        style="padding: 0; align-items: stretch; text-align: center; overflow: hidden; display: flex; flex-direction: column;">
+                        <img src="assets/images/false-positive-reduction.jpg" alt="False Positive Reduction"
+                            style="width: 100%; height: 200px; object-fit: cover;">
+                        <div
+                            style="padding: 32px; display: flex; flex-direction: column; flex: 1; align-items: center;">
+                            <span class="font-mono" style="font-size: 0.75rem; color: var(--color-primary);">[ AI_AUDIT
+                                ]</span>
+                            <h3 style="margin: 12px 0;">False Positive Reduction</h3>
+                            <p style="margin-bottom: 24px; flex: 1;">Systemic calibration of toxicity thresholds
+                                resulting in 40% fewer manual appeals.</p>
+                            <a href="case-studies.html" class="read-logs-link">READ_LOGS <i
+                                    class="ph ph-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Testimonials -->
+        <section style="border-top: var(--border); border-bottom: var(--border);">
+            <div class="container">
+                <div class="section-header">
+                    <span class="font-mono" style="color: var(--color-primary);">[ CLIENT_LOGS ]</span>
+                    <h2 style="margin-top: 16px;">Trusted by Platform Leads</h2>
+                    <p>What trust & safety professionals say about SafeQueue.</p>
+                </div>
+                <div
+                    style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 32px; align-items: stretch;">
+
+                    <div class="testimonial-card" style="text-align: center; display: flex; flex-direction: column;">
+                        <p class="testimonial-quote" style="flex: 1;">
+                            SafeQueue completely transformed how we think about moderation infrastructure. What used to
+                            take our team weeks to audit now runs through a structured pipeline in hours. The false
+                            positive reduction alone saved us thousands in manual review costs.
+                        </p>
+                        <div class="testimonial-author" style="flex-direction: column; align-items: center; gap: 12px;">
+                            <img src="assets/images/testimonial-sarah.jpg" alt="Sarah Mitchell">
+                            <div class="testimonial-author-info">
+                                <h4>Sarah Mitchell</h4>
+                                <span>HEAD_OF_TRUST_&_SAFETY // VERTEX SOCIAL</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="testimonial-card" style="text-align: center; display: flex; flex-direction: column;">
+                        <p class="testimonial-quote" style="flex: 1;">
+                            We brought SafeQueue in during an election cycle when our misinformation queue was
+                            completely overwhelmed. They redesigned our entire escalation architecture in under two
+                            weeks. The results were immediate and measurable.
+                        </p>
+                        <div class="testimonial-author" style="flex-direction: column; align-items: center; gap: 12px;">
+                            <img src="assets/images/testimonial-james.jpg" alt="James Okafor">
+                            <div class="testimonial-author-info">
+                                <h4>James Okafor</h4>
+                                <span>VP_PLATFORM_INTEGRITY // MERIDIAN MEDIA</span>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+        <!-- CTA Section -->
+        <section style="background-color: var(--color-primary); color: #000; text-align: center;">
+            <div class="container">
+                <h2 style="font-size: clamp(2rem, 6vw, 3rem); margin-bottom: 24px;">Deploy safer content pipelines.</h2>
+                <p
+                    style="font-size: 1.25rem; margin-bottom: 40px; max-width: 600px; margin-left: auto; margin-right: auto;">
+                    Start with a comprehensive workflow audit to identify latency and bias in your moderation stack.
+                </p>
+                <a href="contact.html" class="btn cta-btn">Initialize Audit</a>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <a href="index.html" class="logo" style="margin-bottom: 24px;">
+                        <i class="ph-bold ph-shield-check"></i>
+                        SAFE<span>QUEUE</span>
+                    </a>
+                    <p style="color: var(--text-secondary); font-size: 0.875rem; margin-bottom: 24px;">
+                        Mission-critical infrastructure for the modern platform. Trust & Safety engineered for scale.
+                    </p>
+                    <div style="display: flex; gap: 16px;">
+                        <a href="#" class="icon-btn"><i class="ph ph-linkedin-logo"></i></a>
+                        <a href="#" class="icon-btn"><i class="ph ph-github-logo"></i></a>
+                        <a href="#" class="icon-btn"><i class="ph ph-twitter-logo"></i></a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h4>PLATFORM</h4>
+                    <ul class="footer-links">
+                        <li><a href="services.html" class="footer-link">Services</a></li>
+                        <li><a href="case-studies.html" class="footer-link">Case Studies</a></li>
+                        <li><a href="dashboard.html" class="footer-link">Dashboard</a></li>
+                        <li><a href="dashboard.html" class="footer-link">Workflows</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>COMPANY</h4>
+                    <ul class="footer-links">
+                        <li><a href="about.html" class="footer-link">About</a></li>
+                        <li><a href="blog.html" class="footer-link">Blog</a></li>
+                        <li><a href="contact.html" class="footer-link">Contact</a></li>
+                        <li><a href="#" class="footer-link">Careers</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>LEGAL</h4>
+                    <ul class="footer-links">
+                        <li><a href="#" class="footer-link">Privacy Policy</a></li>
+                        <li><a href="#" class="footer-link">Terms of Service</a></li>
+                        <li><a href="#" class="footer-link">Cookie Policy</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 SAFEQUEUE INFRASTRUCTURE GROUP. ALL_RIGHTS_RESERVED.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="assets/js/main.js"></script>
+    <script>
+        // Typewriter Effect
+        const words = ["HATE_SPEECH", "MISINFORMATION", "CSAM_DETECTION", "HARASSMENT"];
+        let wordIndex = 0;
+        let charIndex = 0;
+        let isDeleting = false;
+        const typewriterElement = document.getElementById('typewriter');
+
+        function type() {
+            const currentWord = words[wordIndex];
+            if (isDeleting) {
+                charIndex--;
+            } else {
+                charIndex++;
+            }
+
+            typewriterElement.textContent = currentWord.substring(0, charIndex);
+
+            let typeSpeed = 150;
+            if (isDeleting) typeSpeed /= 2;
+
+            if (!isDeleting && charIndex === currentWord.length) {
+                typeSpeed = 2000;
+                isDeleting = true;
+            } else if (isDeleting && charIndex === 0) {
+                isDeleting = false;
+                wordIndex = (wordIndex + 1) % words.length;
+                typeSpeed = 500;
+            }
+
+            setTimeout(type, typeSpeed);
+        }
+
+        document.addEventListener('DOMContentLoaded', type);
+    </script>
+</body>
+
+</html>

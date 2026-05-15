@@ -1,0 +1,674 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Moderation Ops Dashboard | SafeQueue</title>
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/rtl.css">
+    <style>
+        body {
+            background-color: var(--bg-primary);
+        }
+
+        .dashboard-card-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 32px;
+        }
+
+        .dashboard-card {
+            background-color: var(--bg-secondary);
+            border: var(--border);
+            padding: 32px;
+        }
+
+        .dashboard-layout {
+            display: grid;
+            grid-template-columns: 280px 1fr;
+            min-height: 100vh;
+        }
+
+        .dashboard-sidebar {
+            background-color: var(--bg-secondary);
+            border-right: var(--border);
+            padding: 32px;
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+            position: sticky;
+            top: 0;
+            height: 100vh;
+        }
+
+        .profile-icon {
+            width: 40px;
+            height: 40px;
+            border: var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.25rem;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .profile-icon:hover {
+            background-color: var(--color-primary);
+            color: #000;
+            border-color: var(--color-primary);
+            transform: scale(1.05);
+        }
+
+        .profile-icon i {
+            transition: transform 0.4s ease;
+        }
+
+        .profile-icon:hover i {
+            transform: rotate(15deg);
+        }
+
+        .action-btn {
+            border: 1px solid transparent;
+            transition: var(--transition);
+        }
+
+        .action-btn:hover {
+            transform: translateY(-2px);
+        }
+
+        .btn-approve {
+            border-color: var(--color-accent) !important;
+            color: var(--color-accent) !important;
+        }
+
+        .btn-approve:hover {
+            background-color: var(--color-accent) !important;
+            color: #fff !important;
+        }
+
+        .btn-flag {
+            border-color: var(--color-primary) !important;
+            color: var(--color-primary) !important;
+        }
+
+        .btn-flag:hover {
+            background-color: var(--color-primary) !important;
+            color: #000 !important;
+        }
+
+        .btn-reject {
+            border-color: var(--color-error) !important;
+            color: var(--color-error) !important;
+        }
+
+        .btn-reject:hover {
+            background-color: var(--color-error) !important;
+            color: #fff !important;
+        }
+
+        .sidebar-nav {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .sidebar-link {
+            padding: 12px 16px;
+            border-radius: var(--radius);
+            font-family: var(--font-display);
+            font-size: 0.875rem;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            color: var(--text-secondary);
+            transition: var(--transition);
+        }
+
+        .sidebar-link:hover,
+        .sidebar-link.active {
+            background-color: var(--bg-primary);
+            color: var(--color-primary);
+            border-left: 3px solid var(--color-primary);
+        }
+
+        .dashboard-main {
+            padding: 40px;
+        }
+
+        .dashboard-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 40px;
+            border-bottom: var(--border);
+            padding-bottom: 24px;
+        }
+
+        .kpi-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 24px;
+            margin-bottom: 40px;
+        }
+
+        .kpi-card {
+            background-color: var(--bg-secondary);
+            border: var(--border);
+            padding: 24px;
+        }
+
+        .kpi-card h4 {
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+            margin-bottom: 12px;
+        }
+
+        .kpi-card .value {
+            font-size: 2rem;
+            font-weight: 700;
+            font-family: var(--font-display);
+        }
+
+        .dashboard-section {
+            display: none;
+        }
+
+        .dashboard-section.active {
+            display: block;
+        }
+
+        /* Table Styling */
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.875rem;
+        }
+
+        .data-table th {
+            text-align: left;
+            padding: 16px;
+            border-bottom: 2px solid var(--border);
+            font-family: var(--font-display);
+            color: var(--text-secondary);
+        }
+
+        .data-table td {
+            padding: 16px;
+            border-bottom: var(--border);
+        }
+
+        .badge {
+            padding: 4px 8px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+
+        .badge-high {
+            background: var(--color-error);
+            color: #fff;
+        }
+
+        .badge-med {
+            background: var(--color-primary);
+            color: #000;
+        }
+
+        .badge-low {
+            background: var(--color-accent);
+            color: #fff;
+        }
+
+        /* Chart Styling (Pure CSS/SVG) */
+        .chart-container {
+            background: var(--bg-secondary);
+            border: var(--border);
+            padding: 32px;
+            height: 300px;
+            display: flex;
+            align-items: flex-end;
+            gap: 16px;
+        }
+
+        .bar {
+            flex: 1;
+            background: var(--color-primary);
+            transition: height 1s ease;
+        }
+
+        /* Rule Engine Slider */
+        .slider-row {
+            display: grid;
+            grid-template-columns: 2fr 3fr 1fr;
+            gap: 24px;
+            align-items: center;
+            padding: 16px;
+            border-bottom: var(--border-dim);
+        }
+
+        input[type="range"] {
+            accent-color: var(--color-primary);
+            width: 100%;
+        }
+
+        [dir="rtl"] .dashboard-sidebar {
+            border-right: none;
+            border-left: var(--border);
+        }
+
+        [dir="rtl"] .data-table th {
+            text-align: right;
+        }
+
+        .welcome-banner {
+            background: linear-gradient(135deg, var(--bg-secondary) 0%, var(--bg-primary) 100%);
+            border: var(--border);
+            padding: 32px;
+            margin-bottom: 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .banner-actions {
+            display: flex;
+            gap: 12px;
+            flex-shrink: 0;
+        }
+
+        .banner-actions .btn {
+            padding: 10px 20px;
+            font-size: 0.75rem;
+        }
+
+        .section-header-flex {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 32px;
+            gap: 20px;
+        }
+
+        .banner-actions .btn-outline {
+            border: 1px solid var(--text-primary);
+            color: var(--text-primary);
+        }
+
+        .banner-actions .btn-outline:hover {
+            background-color: var(--text-primary);
+            color: var(--bg-primary);
+        }
+
+        .queue-item {
+            background: var(--bg-primary);
+            border: var(--border);
+            padding: 20px 24px;
+            display: grid;
+            grid-template-columns: 1.5fr 1fr 1fr 1fr 1fr 1.5fr;
+            align-items: center;
+            gap: 20px;
+            transition: var(--transition);
+        }
+
+        .queue-item:hover {
+            border-color: var(--color-primary);
+            transform: translateX(4px);
+        }
+
+        .queue-item .item-meta {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .queue-item .item-id {
+            font-family: var(--font-display);
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        .queue-item .item-label {
+            font-size: 0.7rem;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            font-family: var(--font-display);
+        }
+
+        [dir="rtl"] .queue-item:hover {
+            transform: translateX(-4px);
+        }
+
+        @media (max-width: 1024px) {
+            .dashboard-layout {
+                grid-template-columns: 1fr;
+            }
+
+            .queue-item {
+                grid-template-columns: 1fr 1fr 1fr;
+                gap: 24px;
+            }
+
+            .dashboard-sidebar {
+                position: fixed;
+                left: -100%;
+                z-index: 2000;
+                transition: left 0.3s ease;
+                box-shadow: var(--shadow);
+            }
+
+            .dashboard-sidebar.active {
+                left: 0;
+            }
+
+            .kpi-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .dashboard-header .hamburger-btn {
+                display: flex;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .queue-item {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .queue-item .actions {
+                grid-column: span 2;
+                justify-content: flex-start !important;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .dashboard-main {
+                padding: 20px 16px;
+            }
+
+            .welcome-banner {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 24px;
+                padding: 24px 16px;
+                margin-bottom: 32px;
+            }
+
+            .welcome-banner h1 {
+                font-size: 1.4rem !important;
+                letter-spacing: 0.02em;
+            }
+
+            .dashboard-header h2 {
+                font-size: 1.25rem !important;
+            }
+
+            .dashboard-card h3 {
+                font-size: 1.1rem !important;
+            }
+
+            .banner-actions {
+                width: 100%;
+                flex-direction: column;
+            }
+
+            .banner-actions .btn {
+                width: 100%;
+                text-align: center;
+            }
+
+            .kpi-grid {
+                grid-template-columns: 1fr;
+                gap: 16px;
+            }
+
+            .section-header-flex {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 16px;
+            }
+
+            .dashboard-card-grid {
+                grid-template-columns: 1fr !important;
+                gap: 24px !important;
+            }
+
+            .dashboard-card {
+                padding: 24px 16px !important;
+            }
+
+            .dashboard-section {
+                overflow-x: hidden;
+            }
+
+            .dashboard-main {
+                padding: 16px 12px;
+                overflow-x: hidden;
+            }
+
+            .chart-container {
+                padding: 16px;
+                height: 200px;
+            }
+
+            .queue-item {
+                grid-template-columns: 1fr;
+                gap: 12px;
+                padding: 16px;
+            }
+
+            .queue-item .actions {
+                grid-column: span 1;
+                border-top: var(--border-dim);
+                padding-top: 12px;
+                width: 100%;
+            }
+        }
+
+        .hamburger-btn {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="dashboard-layout">
+        <aside class="dashboard-sidebar" id="sidebar">
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+                <a href="index.html" class="logo">
+                    <i class="ph-bold ph-shield-check"></i>SAFE<span>QUEUE</span>
+                </a>
+                <button class="icon-btn" id="close-sidebar" style="display: none;"><i class="ph ph-x"></i></button>
+            </div>
+            <nav class="sidebar-nav">
+                <a href="#" class="sidebar-link active" data-tab="overview">
+                    <i class="ph ph-squares-four"></i> Overview
+                </a>
+                <a href="#" class="sidebar-link" data-tab="queue">
+                    <i class="ph ph-list-numbers"></i>Management
+                </a>
+                <a href="#" class="sidebar-link" data-tab="rules">
+                    <i class="ph ph-gear"></i> Rule Engine
+                </a>
+                <a href="#" class="sidebar-link" data-tab="analytics">
+                    <i class="ph ph-chart-line"></i> Analytics
+                </a>
+            </nav>
+            <div style="margin-top: auto;">
+                <a href="index.html" class="sidebar-link">
+                    <i class="ph ph-sign-out"></i> Exit System
+                </a>
+            </div>
+        </aside>
+
+        <main class="dashboard-main">
+            <header class="dashboard-header">
+                <div style="display: flex; align-items: center; gap: 16px;">
+                    <button class="icon-btn hamburger-btn" id="open-sidebar"><i class="ph ph-list"></i></button>
+                    <h2 id="page-title">Overview</h2>
+                </div>
+                <div class="nav-actions">
+                    <button class="icon-btn theme-toggle"><i class="ph ph-moon"></i></button>
+                    <button class="icon-btn rtl-toggle"><i class="ph ph-arrows-left-right"></i></button>
+                    <div class="profile-icon">
+                        <i class="ph ph-user"></i>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Welcome Banner -->
+            <div class="welcome-banner">
+                <div style="position: relative; z-index: 1;">
+                    <span class="font-mono" style="color: var(--color-primary); font-size: 0.75rem;">[
+                        SYSTEM_ONLINE_08:42 ]</span>
+                    <h1 style="margin: 12px 0 8px;">Welcome back, System Admin</h1>
+                    <p style="color: var(--text-secondary); max-width: 500px;">Your moderation infrastructure is running
+                        at peak efficiency. 1.4k items currently in high-priority queue.</p>
+                </div>
+                <div class="ph ph-shield-check"
+                    style="font-size: 8rem; opacity: 0.05; position: absolute; right: -20px; top: -20px;"></div>
+                <div class="banner-actions">
+                    <button class="btn btn-primary">Generate Report</button>
+                    <button class="btn btn-outline">Quick Audit</button>
+                </div>
+            </div>
+
+            <!-- Overview Section -->
+            <section id="overview-section" class="dashboard-section active">
+                <!-- KPI Cards -->
+                <div class="kpi-grid">
+                    <div class="kpi-card">
+                        <h4>ACTIVE_QUEUE_SIZE</h4>
+                        <div class="value">1,402</div>
+                    </div>
+                    <div class="kpi-card">
+                        <h4>REVIEWED_TODAY</h4>
+                        <div class="value">8,921</div>
+                    </div>
+                    <div class="kpi-card">
+                        <h4>FALSE_POSITIVE_RATE</h4>
+                        <div class="value" style="color: var(--color-accent);">1.4%</div>
+                    </div>
+                    <div class="kpi-card">
+                        <h4>AI_CONFIDENCE_AVG</h4>
+                        <div class="value">0.88</div>
+                    </div>
+                </div>
+                <div class="dashboard-card-grid">
+                    <div class="dashboard-card">
+                        <h3>System Status</h3>
+                        <p style="margin-bottom: 24px; color: var(--text-secondary);">All moderation pipelines are
+                            operational. AI thresholds are currently within nominal range.</p>
+                        <div class="chart-container" id="overview-chart">
+                            <!-- Bars will be injected via JS -->
+                        </div>
+                    </div>
+                    <div class="dashboard-card">
+                        <h3>Active Alerts</h3>
+                        <ul style="display: flex; flex-direction: column; gap: 16px; margin-top: 24px;">
+                            <li style="border-left: 3px solid var(--color-error); padding-left: 12px;">
+                                <div class="font-mono" style="font-size: 0.75rem;">HIGH_SEVERITY</div>
+                                <p style="font-size: 0.875rem;">Spike in Misinformation [Region: EU]</p>
+                            </li>
+                            <li style="border-left: 3px solid var(--color-primary); padding-left: 12px;">
+                                <div class="font-mono" style="font-size: 0.75rem;">WARNING</div>
+                                <p style="font-size: 0.875rem;">Queue Latency Approaching SLA Limit</p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Queue Management Section -->
+            <section id="queue-section" class="dashboard-section">
+                <div class="dashboard-card">
+                    <div class="section-header-flex">
+                        <div>
+                            <h3>Active Moderation Queue</h3>
+                            <p style="font-size: 0.875rem; color: var(--text-secondary); margin-top: 4px;">Items
+                                awaiting manual review and policy verification.</p>
+                        </div>
+                        <div style="display: flex; gap: 8px;">
+                            <button class="btn btn-outline" style="padding: 8px 16px;">Filter</button>
+                            <button class="btn btn-primary" style="padding: 8px 16px;">Bulk Action</button>
+                        </div>
+                    </div>
+
+                    <div id="queue-container" style="display: flex; flex-direction: column; gap: 16px;">
+                        <!-- Cards injected via JS -->
+                    </div>
+                </div>
+            </section>
+
+            <!-- Rule Engine Section -->
+            <section id="rules-section" class="dashboard-section">
+                <div class="dashboard-card">
+                    <h3>Toxicity Rule Configuration</h3>
+                    <p style="margin-bottom: 32px; color: var(--text-secondary);">Adjust automated enforcement
+                        thresholds for various content categories.</p>
+
+                    <div id="rules-container">
+                        <!-- Rule rows injected via JS -->
+                    </div>
+                </div>
+            </section>
+
+            <!-- Analytics Section -->
+            <section id="analytics-section" class="dashboard-section">
+                <div class="dashboard-card-grid">
+                    <div class="dashboard-card">
+                        <h3>Volume Trend (7 Days)</h3>
+                        <div class="chart-container" id="trend-chart">
+                            <!-- Bars injected via JS -->
+                        </div>
+                    </div>
+                    <div style="background: var(--bg-secondary); border: var(--border); padding: 32px;">
+                        <h3>Category Breakdown</h3>
+                        <div style="margin-top: 40px; display: flex; flex-direction: column; gap: 16px;">
+                            <div>
+                                <div
+                                    style="display: flex; justify-content: space-between; font-size: 0.75rem; margin-bottom: 4px;">
+                                    <span>Hate Speech</span>
+                                    <span>42%</span>
+                                </div>
+                                <div style="height: 8px; background: var(--border);">
+                                    <div style="width: 42%; height: 100%; background: var(--color-error);"></div>
+                                </div>
+                            </div>
+                            <div>
+                                <div
+                                    style="display: flex; justify-content: space-between; font-size: 0.75rem; margin-bottom: 4px;">
+                                    <span>Misinformation</span>
+                                    <span>28%</span>
+                                </div>
+                                <div style="height: 8px; background: var(--border);">
+                                    <div style="width: 28%; height: 100%; background: var(--color-primary);"></div>
+                                </div>
+                            </div>
+                            <div>
+                                <div
+                                    style="display: flex; justify-content: space-between; font-size: 0.75rem; margin-bottom: 4px;">
+                                    <span>Harassment</span>
+                                    <span>30%</span>
+                                </div>
+                                <div style="height: 8px; background: var(--border);">
+                                    <div style="width: 30%; height: 100%; background: var(--color-accent);"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="assets/js/main.js"></script>
+    <script src="assets/js/dashboard.js"></script>
+</body>
+
+</html>

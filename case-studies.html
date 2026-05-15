@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Case Studies | SafeQueue</title>
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/rtl.css">
+    <style>
+        .case-study-card {
+            border: var(--border);
+            padding: 0;
+            overflow: hidden;
+            background-color: var(--bg-primary);
+        }
+
+        .case-study-header {
+            padding: 40px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .case-study-header:hover {
+            background-color: var(--bg-secondary);
+        }
+
+        .case-study-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease;
+            padding: 0 40px;
+            background-color: var(--bg-secondary);
+        }
+
+        .case-study-card.open .case-study-content {
+            max-height: 1000px;
+            padding: 40px;
+        }
+
+        .case-study-card.open .case-study-header i {
+            transform: rotate(180deg);
+        }
+
+        .tag {
+            font-family: var(--font-display);
+            font-size: 0.75rem;
+            padding: 4px 8px;
+            background-color: var(--color-primary);
+            color: #000;
+            margin-right: 8px;
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <a href="index.html" class="logo"><i class="ph-bold ph-shield-check"></i>SAFE<span>QUEUE</span></a>
+            <ul class="nav-links">
+                <li><a href="index.html" class="nav-link">Home</a></li>
+                <li><a href="home2.html" class="nav-link">Home 2</a></li>
+                <li><a href="services.html" class="nav-link">Services</a></li>
+                <li><a href="case-studies.html" class="nav-link active">Case Studies</a></li>
+                <li><a href="blog.html" class="nav-link">Blog</a></li>
+                <li><a href="contact.html" class="nav-link">Contact</a></li>
+                <li><a href="dashboard.html" class="nav-link">Dashboard</a></li>
+            </ul>
+            <div class="nav-actions">
+                <button class="icon-btn theme-toggle"><i class="ph ph-moon"></i></button>
+                <button class="icon-btn rtl-toggle"><i class="ph ph-arrows-left-right"></i></button>
+                <a href="login.html" class="btn btn-primary">Login</a>
+                <button class="icon-btn hamburger-btn"><i class="ph ph-list"></i></button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Mobile Drawer -->
+    <div class="drawer-overlay"></div>
+    <div class="drawer">
+        <button class="icon-btn drawer-close" style="align-self: flex-end;"><i class="ph ph-x"></i></button>
+        <div class="drawer-links">
+            <a href="index.html" class="drawer-link">Home</a>
+            <a href="home2.html" class="drawer-link">Home 2</a>
+            <a href="services.html" class="drawer-link">Services</a>
+            <a href="case-studies.html" class="drawer-link active">Case Studies</a>
+            <a href="blog.html" class="drawer-link">Blog</a>
+            <a href="contact.html" class="drawer-link">Contact</a>
+            <a href="dashboard.html" class="drawer-link">Dashboard</a>
+            <a href="login.html" class="btn btn-primary" style="margin-top: 24px; text-align: center;">Login</a>
+        </div>
+    </div>
+
+    <main style="padding-top: 120px;">
+        <section>
+            <div class="container">
+                <div class="section-header">
+                    <span class="font-mono" style="color: var(--color-primary);">[ INFRASTRUCTURE_LOGS ]</span>
+                    <h1 style="margin: 16px 0;">Trust & Safety Portfolio</h1>
+                    <p>Documented outcomes from mission-critical deployments.</p>
+                </div>
+
+                <div style="display: flex; flex-direction: column; gap: 24px;">
+                    <!-- Case Study 1 -->
+                    <div class="case-study-card">
+                        <div class="case-study-header" onclick="this.parentElement.classList.toggle('open')">
+                            <div>
+                                <span class="tag">Queue Design</span>
+                                <span class="tag">Policy</span>
+                                <h3 style="margin-top: 16px;">Global Taxonomy Harmonization</h3>
+                            </div>
+                            <i class="ph ph-caret-down" style="font-size: 1.5rem; transition: transform 0.3s;"></i>
+                        </div>
+                        <div class="case-study-content">
+                            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 40px;">
+                                <div>
+                                    <h4 class="font-mono" style="margin-bottom: 12px;">PROBLEM</h4>
+                                    <p>A global social platform had 14 different regional definitions for "hate speech,"
+                                        leading to inconsistent enforcement and 20% appeal rate.</p>
+                                </div>
+                                <div>
+                                    <h4 class="font-mono" style="margin-bottom: 12px;">SOLUTION</h4>
+                                    <p>SafeQueue designed a unified policy taxonomy with regional "modifiers,"
+                                        implemented via a dynamic rule engine that adjusts thresholds based on content
+                                        metadata.</p>
+                                </div>
+                            </div>
+                            <div style="margin-top: 24px; border-top: var(--border); padding-top: 24px;">
+                                <h4 class="font-mono" style="margin-bottom: 12px;">OUTCOME</h4>
+                                <p style="color: var(--color-accent); font-weight: 700;">85% reduction in cross-regional
+                                    enforcement drift; 40% drop in manual appeals.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Case Study 2 -->
+                    <div class="case-study-card">
+                        <div class="case-study-header" onclick="this.parentElement.classList.toggle('open')">
+                            <div>
+                                <span class="tag">AI Integration</span>
+                                <span class="tag">Escalation</span>
+                                <h3 style="margin-top: 16px;">3-Tier Hybrid Review Pipeline</h3>
+                            </div>
+                            <i class="ph ph-caret-down" style="font-size: 1.5rem; transition: transform 0.3s;"></i>
+                        </div>
+                        <div class="case-study-content">
+                            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 40px;">
+                                <div>
+                                    <h4 class="font-mono" style="margin-bottom: 12px;">PROBLEM</h4>
+                                    <p>High-risk misinformation during election cycles was being buried in standard
+                                        queues, with human review latency exceeding 24 hours.</p>
+                                </div>
+                                <div>
+                                    <h4 class="font-mono" style="margin-bottom: 12px;">SOLUTION</h4>
+                                    <p>Architected a "Fast-Path" queue that uses AI confidence scores to route
+                                        high-severity content directly to senior policy leads within seconds.</p>
+                                </div>
+                            </div>
+                            <div style="margin-top: 24px; border-top: var(--border); padding-top: 24px;">
+                                <h4 class="font-mono" style="margin-bottom: 12px;">OUTCOME</h4>
+                                <p style="color: var(--color-accent); font-weight: 700;">Critical content review latency
+                                    reduced to < 2 minutes; 100% SLA compliance on high-risk tags.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Case Study 3 -->
+                    <div class="case-study-card">
+                        <div class="case-study-header" onclick="this.parentElement.classList.toggle('open')">
+                            <div>
+                                <span class="tag">False Positives</span>
+                                <span class="tag">Queue Ops</span>
+                                <h3 style="margin-top: 16px;">Toxicity Threshold Calibration</h3>
+                            </div>
+                            <i class="ph ph-caret-down" style="font-size: 1.5rem; transition: transform 0.3s;"></i>
+                        </div>
+                        <div class="case-study-content">
+                            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 40px;">
+                                <div>
+                                    <h4 class="font-mono" style="margin-bottom: 12px;">PROBLEM</h4>
+                                    <p>Over-aggressive AI filtering was blocking legitimate counter-speech, causing a PR
+                                        crisis and user churn in minority language communities.</p>
+                                </div>
+                                <div>
+                                    <h4 class="font-mono" style="margin-bottom: 12px;">SOLUTION</h4>
+                                    <p>Implemented a "Shadow Queue" for retrospective auditing of AI decisions, allowing
+                                        for real-time threshold adjustment without disrupting user experience.</p>
+                                </div>
+                            </div>
+                            <div style="margin-top: 24px; border-top: var(--border); padding-top: 24px;">
+                                <h4 class="font-mono" style="margin-bottom: 12px;">OUTCOME</h4>
+                                <p style="color: var(--color-accent); font-weight: 700;">60% reduction in false
+                                    positives for counter-speech; restored user trust metrics within 3 months.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Outcomes At A Glance -->
+        <section style="border-bottom: var(--border);">
+            <div class="container">
+                <div class="section-header">
+                    <span class="font-mono" style="color: var(--color-primary);">[ OUTCOMES_AT_A_GLANCE ]</span>
+                    <h2 style="margin-top: 16px;">Results That Speak For Themselves</h2>
+                    <p>Measured outcomes across every SafeQueue deployment.</p>
+                </div>
+
+                <div class="outcomes-grid">
+
+                    <div>
+                        <img src="assets/images/outcomes-team.jpg" alt="Outcomes Team"
+                            style="width: 100%; height: 480px; object-fit: cover; object-position: top; border: var(--border);">
+                    </div>
+
+                    <div style="background-color: var(--bg-secondary); padding: 48px; border: var(--border);">
+
+                        <div class="outcome-row">
+                            <div>
+                                <div class="outcome-metric">85%</div>
+                                <div class="outcome-label">// ENFORCEMENT_DRIFT_REDUCTION</div>
+                            </div>
+                            <div style="text-align: right;">
+                                <span class="outcome-tag">CASE_01</span>
+                                <p class="outcome-desc" style="margin-top: 8px;">Global taxonomy harmonization across 14
+                                    regional definitions.</p>
+                            </div>
+                        </div>
+
+                        <div class="outcome-row">
+                            <div>
+                                <div class="outcome-metric">&lt;2min</div>
+                                <div class="outcome-label">// CRITICAL_REVIEW_LATENCY</div>
+                            </div>
+                            <div style="text-align: right;">
+                                <span class="outcome-tag">CASE_02</span>
+                                <p class="outcome-desc" style="margin-top: 8px;">3-tier hybrid pipeline during live
+                                    election cycle monitoring.</p>
+                            </div>
+                        </div>
+
+                        <div class="outcome-row">
+                            <div>
+                                <div class="outcome-metric">60%</div>
+                                <div class="outcome-label">// FALSE_POSITIVE_REDUCTION</div>
+                            </div>
+                            <div style="text-align: right;">
+                                <span class="outcome-tag">CASE_03</span>
+                                <p class="outcome-desc" style="margin-top: 8px;">Toxicity threshold calibration
+                                    restoring minority language communities.</p>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Process In Action -->
+        <!-- Process In Action -->
+        <section style="border-bottom: var(--border);">
+            <div class="container">
+                <div class="section-header">
+                    <span class="font-mono" style="color: var(--color-primary);">[ PROCESS_IN_ACTION ]</span>
+                    <h2 style="margin-top: 16px;">The Work Behind The Results</h2>
+                    <p>A look inside how SafeQueue designs, audits, and deploys mission-critical infrastructure.</p>
+                </div>
+
+                <div class="process-grid">
+
+                    <div class="process-image-card" style="display: flex; flex-direction: column;">
+                        <img src="assets/images/audit-session.jpg" alt="War Room Audit Session"
+                            style="width: 100%; height: 280px; object-fit: cover; object-position: top;">
+                        <div
+                            style="padding: 28px; border: var(--border); border-top: none; flex: 1; text-align: center;">
+                            <span class="process-image-phase">01 // AUDIT_PHASE</span>
+                            <h4 class="process-image-title" style="color: var(--text-primary); margin-bottom: 12px;">War
+                                Room Audit Session</h4>
+                            <p class="process-image-desc" style="max-height: none; color: var(--text-secondary);">Deep
+                                diagnostic review of existing moderation infrastructure, policy gaps, and queue
+                                inefficiencies.</p>
+                        </div>
+                    </div>
+
+                    <div class="process-image-card" style="display: flex; flex-direction: column;">
+                        <img src="assets/images/architecture-session.jpg" alt="Whiteboard Architecture Session"
+                            style="width: 100%; height: 280px; object-fit: cover; object-position: top;">
+                        <div
+                            style="padding: 28px; border: var(--border); border-top: none; flex: 1; text-align: center;">
+                            <span class="process-image-phase">02 // DESIGN_PHASE</span>
+                            <h4 class="process-image-title" style="color: var(--text-primary); margin-bottom: 12px;">
+                                Architecture Design Session</h4>
+                            <p class="process-image-desc" style="max-height: none; color: var(--text-secondary);">Custom
+                                queue architecture and escalation blueprints tailored to platform scale and policy
+                                requirements.</p>
+                        </div>
+                    </div>
+
+                    <div class="process-image-card" style="display: flex; flex-direction: column;">
+                        <img src="assets/images/deployment-monitoring.jpg" alt="Deployment Monitoring"
+                            style="width: 100%; height: 280px; object-fit: cover; object-position: top;">
+                        <div
+                            style="padding: 28px; border: var(--border); border-top: none; flex: 1; text-align: center;">
+                            <span class="process-image-phase">03 // DEPLOY_PHASE</span>
+                            <h4 class="process-image-title" style="color: var(--text-primary); margin-bottom: 12px;">
+                                Live Deployment Monitoring</h4>
+                            <p class="process-image-desc" style="max-height: none; color: var(--text-secondary);">
+                                Real-time tracking of system performance, threshold calibration, and SLA compliance at
+                                every rollout stage.</p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-bottom">
+                <p>&copy; 2024 SAFEQUEUE INFRASTRUCTURE GROUP. ALL_RIGHTS_RESERVED.</p>
+            </div>
+        </div>
+    </footer>
+    <script src="assets/js/main.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,31 @@
+/* 
+  SafeQueue - RTL Overrides
+*/
+
+[dir="rtl"] {
+  text-align: right;
+}
+
+[dir="rtl"] .logo {
+  flex-direction: row-reverse;
+}
+
+[dir="rtl"] .nav-actions {
+  flex-direction: row-reverse;
+}
+
+[dir="rtl"] .drawer {
+  right: auto;
+  left: -100%;
+}
+
+[dir="rtl"] .drawer.open {
+  right: auto;
+  left: 0;
+}
+
+/* Logical property fallbacks if needed, though modern browsers handle most */
+[dir="rtl"] .nav-link.active::after {
+  left: auto;
+  right: 0;
+}
