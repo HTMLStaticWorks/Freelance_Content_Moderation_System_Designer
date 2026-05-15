@@ -568,8 +568,13 @@ section {
     display: flex;
   }
 
+  .navbar .nav-actions .theme-toggle,
+  .navbar .nav-actions .rtl-toggle {
+    display: none;
+  }
+
   .footer-grid {
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: repeat(4, 1fr);
   }
 
   .features-grid,
@@ -595,12 +600,12 @@ section {
   }
 
   .footer-grid {
-    grid-template-columns: 1fr;
-    text-align: center;
+    grid-template-columns: repeat(2, 1fr);
+    text-align: left;
   }
 
   .footer-links {
-    align-items: center;
+    align-items: flex-start;
   }
 
   .features-grid,
@@ -640,8 +645,17 @@ section {
 
   .features-grid,
   .portfolio-grid,
-  .process-grid {
+  .process-grid,
+  .footer-grid {
     grid-template-columns: 1fr;
+  }
+
+  .footer-grid {
+    text-align: center;
+  }
+
+  .footer-links {
+    align-items: center;
   }
 
   .features-grid .card:nth-child(3),

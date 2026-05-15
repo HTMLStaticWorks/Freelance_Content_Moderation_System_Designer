@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,7 +8,127 @@
     <script src="https://unpkg.com/@phosphor-icons/web"></script>
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="stylesheet" href="assets/css/rtl.css">
+    <link rel="icon" type="image/svg+xml" href="assets/images/favicon.svg">
+    <style>
+        .mission-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            margin-bottom: 80px;
+            align-items: center;
+        }
+
+        @media (max-width: 768px) {
+            .mission-grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
+                text-align: center;
+            }
+
+            .mission-grid .mission-text {
+                order: 2;
+            }
+
+            .mission-grid .mission-image {
+                order: 1;
+            }
+        }
+
+        .team-card {
+            text-align: center;
+            border: var(--border);
+            overflow: hidden;
+            transition: border-color 0.3s ease, transform 0.3s ease;
+            position: relative;
+        }
+
+        .team-card:hover {
+            border-color: var(--color-primary);
+            transform: translateY(-6px);
+        }
+
+        .team-card img {
+            width: 100%;
+            height: 320px;
+            object-fit: cover;
+            object-position: top;
+            display: block;
+            transition: transform 0.5s ease;
+            filter: grayscale(20%);
+        }
+
+        .team-card:hover img {
+            transform: scale(1.04);
+            filter: grayscale(0%);
+        }
+
+        .team-card-info {
+            padding: 32px;
+            border-top: var(--border);
+            transition: background-color 0.3s ease;
+        }
+
+        .team-card:hover .team-card-info {
+            background-color: var(--bg-secondary);
+        }
+
+        .team-card-role {
+            font-family: var(--font-display);
+            font-size: 0.65rem;
+            color: var(--color-primary);
+            letter-spacing: 0.1em;
+            margin-bottom: 8px;
+            display: block;
+        }
+
+        .team-card-name {
+            font-size: 1.1rem;
+            margin-bottom: 12px;
+            transition: color 0.3s ease;
+        }
+
+        .team-card:hover .team-card-name {
+            color: var(--color-primary);
+        }
+
+        .team-card-quote {
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+            line-height: 1.6;
+            font-style: italic;
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+
+        @media (max-width: 992px) {
+            .team-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .team-grid .team-card:last-child {
+                grid-column: span 2;
+                width: calc(50% - 12px);
+                margin-inline: auto;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .team-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .team-grid .team-card:last-child {
+                grid-column: auto;
+                width: 100%;
+            }
+        }
+    </style>
 </head>
+
 <body>
     <nav class="navbar">
         <div class="container">
@@ -15,6 +136,7 @@
             <ul class="nav-links">
                 <li><a href="index.html" class="nav-link">Home</a></li>
                 <li><a href="home2.html" class="nav-link">Home 2</a></li>
+                <li><a href="about.html" class="nav-link active">About</a></li>
                 <li><a href="services.html" class="nav-link">Services</a></li>
                 <li><a href="case-studies.html" class="nav-link">Case Studies</a></li>
                 <li><a href="blog.html" class="nav-link">Blog</a></li>
@@ -29,7 +151,7 @@
             </div>
         </div>
     </nav>
-    
+
     <!-- Mobile Drawer -->
     <div class="drawer-overlay"></div>
     <div class="drawer">
@@ -37,6 +159,7 @@
         <div class="drawer-links">
             <a href="index.html" class="drawer-link">Home</a>
             <a href="home2.html" class="drawer-link">Home 2</a>
+            <a href="about.html" class="drawer-link active">About</a>
             <a href="services.html" class="drawer-link">Services</a>
             <a href="case-studies.html" class="drawer-link">Case Studies</a>
             <a href="blog.html" class="drawer-link">Blog</a>
@@ -52,17 +175,25 @@
                 <div style="max-width: 800px; margin: 0 auto; text-align: center; margin-bottom: 80px;">
                     <span class="font-mono" style="color: var(--color-primary);">[ ORIGIN_STORY ]</span>
                     <h1 style="margin: 24px 0; font-size: 3rem;">Engineering Resilience into Digital Governance</h1>
-                    <p style="font-size: 1.25rem; color: var(--text-secondary);">SafeQueue was built to solve the infrastructure gap in Trust & Safety. We don't just filter content; we design the systems that govern it.</p>
+                    <p style="font-size: 1.25rem; color: var(--text-secondary);">SafeQueue was built to solve the
+                        infrastructure gap in Trust & Safety. We don't just filter content; we design the systems that
+                        govern it.</p>
                 </div>
 
-                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 80px; margin-bottom: 80px; align-items: center;">
-                    <div>
+                <div class="mission-grid">
+                    <div class="mission-text">
                         <h2 style="margin-bottom: 24px;">The Mission</h2>
-                        <p style="margin-bottom: 24px;">Moderation is the most complex infrastructure challenge of our time. It requires the precision of engineering and the nuance of policy. SafeQueue bridges this gap by providing platform leads with auditable, scalable, and human-centered workflow designs.</p>
-                        <p>Our philosophy is simple: **Moderation is not just filtering — it's governance.** We build systems that are transparent to auditors, efficient for reviewers, and protective for users.</p>
+                        <p style="margin-bottom: 24px;">Moderation is the most complex infrastructure challenge of our
+                            time. It requires the precision of engineering and the nuance of policy. SafeQueue bridges
+                            this gap by providing platform leads with auditable, scalable, and human-centered workflow
+                            designs.</p>
+                        <p>Our philosophy is simple: Moderation is not just filtering — it's governance. We build
+                            systems that are transparent to auditors, efficient for reviewers, and protective for users.
+                        </p>
                     </div>
-                    <div>
-                        <img src="https://images.unsplash.com/photo-1551434678-e076c223a692?auto=format&fit=crop&q=80&w=800" alt="Team collaborating" style="border: var(--border);">
+                    <div class="mission-image">
+                        <img src="assets/images/about-mission.jpg" alt="Team collaborating"
+                            style="width: 100%; height: 400px; object-fit: cover; object-position: top; border: var(--border);">
                     </div>
                 </div>
 
@@ -74,36 +205,127 @@
                             <div class="font-mono" style="color: var(--color-primary); font-weight: 700;">2021</div>
                             <div>
                                 <h4>System Inception</h4>
-                                <p style="color: var(--text-secondary);">Founded SafeQueue to address the lack of specialized infrastructure design in the trust & safety space.</p>
+                                <p style="color: var(--text-secondary);">Founded SafeQueue to address the lack of
+                                    specialized infrastructure design in the trust & safety space.</p>
                             </div>
                         </div>
                         <div style="display: flex; gap: 40px; margin-bottom: 40px;">
                             <div class="font-mono" style="color: var(--color-primary); font-weight: 700;">2022</div>
                             <div>
                                 <h4>Global Deployment</h4>
-                                <p style="color: var(--text-secondary);">First enterprise-level queue architecture implemented for a major video platform.</p>
+                                <p style="color: var(--text-secondary);">First enterprise-level queue architecture
+                                    implemented for a major video platform.</p>
                             </div>
                         </div>
                         <div style="display: flex; gap: 40px; margin-bottom: 40px;">
                             <div class="font-mono" style="color: var(--color-primary); font-weight: 700;">2023</div>
                             <div>
                                 <h4>AI Hybrid Framework</h4>
-                                <p style="color: var(--text-secondary);">Launched the proprietary hybrid-escalation framework used by 12+ regional moderation centers.</p>
+                                <p style="color: var(--text-secondary);">Launched the proprietary hybrid-escalation
+                                    framework used by 12+ regional moderation centers.</p>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
-    </main>
 
+        <!-- The Team -->
+        <section style="border-top: var(--border);">
+            <div class="container">
+                <div class="section-header">
+                    <span class="font-mono" style="color: var(--color-primary);">[ CORE_TEAM ]</span>
+                    <h2 style="margin-top: 16px;">The People Behind The Infrastructure</h2>
+                    <p>Trust & safety veterans with experience across the world's largest platforms.</p>
+                </div>
+
+                <div class="team-grid">
+
+                    <div class="team-card">
+                        <img src="assets/images/team-sarah.jpg" alt="Sarah Mitchell">
+                        <div class="team-card-info">
+                            <span class="team-card-role">// FOUNDER_&_LEAD_ARCHITECT</span>
+                            <h4 class="team-card-name">Sarah Mitchell</h4>
+                            <p class="team-card-quote">"Moderation infrastructure is the constitution of a platform. It
+                                must be written with precision."</p>
+                        </div>
+                    </div>
+
+                    <div class="team-card">
+                        <img src="assets/images/team-marcus.jpg" alt="Marcus Okafor">
+                        <div class="team-card-info">
+                            <span class="team-card-role">// HEAD_OF_POLICY_DESIGN</span>
+                            <h4 class="team-card-name">Marcus Okafor</h4>
+                            <p class="team-card-quote">"Policy without taxonomy is just opinion. Our job is to turn
+                                nuance into logic that scales."</p>
+                        </div>
+                    </div>
+
+                    <div class="team-card">
+                        <img src="assets/images/team-priya.jpg" alt="Priya Nair">
+                        <div class="team-card-info">
+                            <span class="team-card-role">// LEAD_SYSTEMS_ENGINEER</span>
+                            <h4 class="team-card-name">Priya Nair</h4>
+                            <p class="team-card-quote">"Every queue is a decision tree in disguise. The difference is
+                                whether you designed it or inherited it."</p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+    </main>
+    <!-- Footer -->
     <footer class="footer">
         <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <a href="index.html" class="logo" style="margin-bottom: 24px;">
+                        <i class="ph-bold ph-shield-check"></i>
+                        SAFE<span>QUEUE</span>
+                    </a>
+                    <p style="color: var(--text-secondary); font-size: 0.875rem; margin-bottom: 24px;">
+                        Mission-critical infrastructure for the modern platform. Trust & Safety engineered for scale.
+                    </p>
+                    <div style="display: flex; gap: 16px;">
+                        <a href="#" class="icon-btn"><i class="ph ph-linkedin-logo"></i></a>
+                        <a href="#" class="icon-btn"><i class="ph ph-github-logo"></i></a>
+                        <a href="#" class="icon-btn"><i class="ph ph-twitter-logo"></i></a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h4>PLATFORM</h4>
+                    <ul class="footer-links">
+                        <li><a href="services.html" class="footer-link">Services</a></li>
+                        <li><a href="case-studies.html" class="footer-link">Case Studies</a></li>
+                        <li><a href="dashboard.html" class="footer-link">Dashboard</a></li>
+                        <li><a href="dashboard.html" class="footer-link">Workflows</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>COMPANY</h4>
+                    <ul class="footer-links">
+                        <li><a href="about.html" class="footer-link">About</a></li>
+                        <li><a href="blog.html" class="footer-link">Blog</a></li>
+                        <li><a href="contact.html" class="footer-link">Contact</a></li>
+                        <li><a href="#" class="footer-link">Careers</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>LEGAL</h4>
+                    <ul class="footer-links">
+                        <li><a href="#" class="footer-link">Privacy Policy</a></li>
+                        <li><a href="#" class="footer-link">Terms of Service</a></li>
+                        <li><a href="#" class="footer-link">Cookie Policy</a></li>
+                    </ul>
+                </div>
+            </div>
             <div class="footer-bottom">
-                <p>&copy; 2024 SAFEQUEUE INFRASTRUCTURE GROUP. ALL_RIGHTS_RESERVED.</p>
+                <p>&copy; 2026 SAFEQUEUE INFRASTRUCTURE GROUP. ALL_RIGHTS_RESERVED.</p>
             </div>
         </div>
     </footer>
     <script src="assets/js/main.js"></script>
 </body>
+
 </html>

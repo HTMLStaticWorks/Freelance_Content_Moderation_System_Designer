@@ -1,61 +1,100 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Blog Post | SafeQueue</title>
     <script src="https://unpkg.com/@phosphor-icons/web"></script>
     <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="icon" type="image/svg+xml" href="assets/images/favicon.svg">
 </head>
+
 <body>
-    <nav class="navbar">
+    <header style="padding: 32px 0; border-bottom: var(--border);">
         <div class="container">
             <a href="index.html" class="logo"><i class="ph-bold ph-shield-check"></i>SAFE<span>QUEUE</span></a>
-            <ul class="nav-links">
-                <li><a href="index.html" class="nav-link">Home</a></li>
-                <li><a href="blog.html" class="nav-link active">Blog</a></li>
-                <li><a href="contact.html" class="nav-link">Contact</a></li>
-                <li><a href="dashboard.html" class="nav-link">Dashboard</a></li>
-            </ul>
         </div>
-    </nav>
-    
-    <!-- Mobile Drawer -->
-    <div class="drawer-overlay"></div>
-    <div class="drawer">
-        <button class="icon-btn drawer-close" style="align-self: flex-end;"><i class="ph ph-x"></i></button>
-        <div class="drawer-links">
-            <a href="index.html" class="drawer-link">Home</a>
-            <a href="home2.html" class="drawer-link">Home 2</a>
-            <a href="services.html" class="drawer-link">Services</a>
-            <a href="case-studies.html" class="drawer-link">Case Studies</a>
-            <a href="blog.html" class="drawer-link active">Blog</a>
-            <a href="contact.html" class="drawer-link">Contact</a>
-            <a href="dashboard.html" class="drawer-link">Dashboard</a>
-            <a href="login.html" class="btn btn-primary" style="margin-top: 24px; text-align: center;">Login</a>
-        </div>
-    </div>
+    </header>
 
-    <main style="padding-top: 120px;">
-        <article class="container" style="max-width: 800px;">
+    <main style="padding: 64px 0;">
+        <article class="container" style="max-width: 800px; text-align: center;">
+            <a href="blog.html" class="read-logs-link"
+                style="margin-bottom: 32px; display: inline-flex; justify-content: center;">
+                <i class="ph ph-arrow-left" style="margin-right: 8px;"></i> BACK_TO_BLOG
+            </a>
+            <br>
             <span class="font-mono" style="color: var(--color-primary);">[ 2024-05-14 ]</span>
             <h1 style="font-size: 3rem; margin: 24px 0;">The End of "Zero Tolerance"</h1>
-            <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&q=80&w=1200" style="margin-bottom: 40px; border: var(--border);">
-            
-            <div style="font-size: 1.125rem; line-height: 1.8;">
-                <p style="margin-bottom: 24px;">For years, content moderation was treated as a binary problem. A piece of content was either "good" or "bad." Platforms implemented "Zero Tolerance" policies that, while simple to communicate, failed to account for the nuance of human communication.</p>
-                <p style="margin-bottom: 24px;">Today, we are seeing the collapse of this binary model. Context is king. A term that is offensive in one community may be reclaimed in another. A political statement that is misinformation in one region may be a critical piece of counter-speech in another.</p>
+            <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&q=80&w=1200"
+                style="margin-bottom: 40px; border: var(--border);">
+
+            <div style="font-size: 1.125rem; line-height: 1.8; text-align: center;">
+                <p style="margin-bottom: 24px;">For years, content moderation was treated as a binary problem. A piece
+                    of content was either "good" or "bad." Platforms implemented "Zero Tolerance" policies that, while
+                    simple to communicate, failed to account for the nuance of human communication.</p>
+                <p style="margin-bottom: 24px;">Today, we are seeing the collapse of this binary model. Context is king.
+                    A term that is offensive in one community may be reclaimed in another. A political statement that is
+                    misinformation in one region may be a critical piece of counter-speech in another.</p>
                 <h2 style="margin: 40px 0 24px;">Moving to a Weighted Governance Model</h2>
-                <p style="margin-bottom: 24px;">SafeQueue advocates for a weighted governance model where moderation actions are proportionate to the context, severity, and reach of the content. This requires sophisticated infrastructure that can handle multi-dimensional metadata in real-time.</p>
+                <p style="margin-bottom: 24px;">SafeQueue advocates for a weighted governance model where moderation
+                    actions are proportionate to the context, severity, and reach of the content. This requires
+                    sophisticated infrastructure that can handle multi-dimensional metadata in real-time.</p>
             </div>
         </article>
     </main>
 
+    <!-- Footer -->
     <footer class="footer">
-        <div class="container" style="text-align: center;">
-            <p>&copy; 2024 SAFEQUEUE INFRASTRUCTURE GROUP.</p>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <a href="index.html" class="logo" style="margin-bottom: 24px;">
+                        <i class="ph-bold ph-shield-check"></i>
+                        SAFE<span>QUEUE</span>
+                    </a>
+                    <p style="color: var(--text-secondary); font-size: 0.875rem; margin-bottom: 24px;">
+                        Mission-critical infrastructure for the modern platform. Trust & Safety engineered for scale.
+                    </p>
+                    <div style="display: flex; gap: 16px;">
+                        <a href="#" class="icon-btn"><i class="ph ph-linkedin-logo"></i></a>
+                        <a href="#" class="icon-btn"><i class="ph ph-github-logo"></i></a>
+                        <a href="#" class="icon-btn"><i class="ph ph-twitter-logo"></i></a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h4>PLATFORM</h4>
+                    <ul class="footer-links">
+                        <li><a href="services.html" class="footer-link">Services</a></li>
+                        <li><a href="case-studies.html" class="footer-link">Case Studies</a></li>
+                        <li><a href="dashboard.html" class="footer-link">Dashboard</a></li>
+                        <li><a href="dashboard.html" class="footer-link">Workflows</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>COMPANY</h4>
+                    <ul class="footer-links">
+                        <li><a href="about.html" class="footer-link">About</a></li>
+                        <li><a href="blog.html" class="footer-link">Blog</a></li>
+                        <li><a href="contact.html" class="footer-link">Contact</a></li>
+                        <li><a href="#" class="footer-link">Careers</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>LEGAL</h4>
+                    <ul class="footer-links">
+                        <li><a href="#" class="footer-link">Privacy Policy</a></li>
+                        <li><a href="#" class="footer-link">Terms of Service</a></li>
+                        <li><a href="#" class="footer-link">Cookie Policy</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 SAFEQUEUE INFRASTRUCTURE GROUP. ALL_RIGHTS_RESERVED.</p>
+            </div>
         </div>
     </footer>
     <script src="assets/js/main.js"></script>
 </body>
+
 </html>
