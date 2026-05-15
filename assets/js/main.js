@@ -8,7 +8,29 @@ document.addEventListener('DOMContentLoaded', () => {
     initMobileNav();
     initScrollHeader();
     initPasswordToggle();
+    initBackToTop();
 });
+
+// Back to Top
+function initBackToTop() {
+    const btn = document.querySelector('.back-to-top');
+    if (!btn) return;
+
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 300) {
+            btn.classList.add('show');
+        } else {
+            btn.classList.remove('show');
+        }
+    });
+
+    btn.addEventListener('click', () => {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+    });
+}
 
 // Password Toggle
 function initPasswordToggle() {

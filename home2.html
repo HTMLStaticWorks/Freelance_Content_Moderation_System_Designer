@@ -446,7 +446,38 @@
         </div>
     </footer>
 
+    <button class="back-to-top" aria-label="Back to Top">
+        <i class="ph ph-arrow-up"></i>
+    </button>
     <script src="assets/js/main.js"></script>
+    <script>
+        // Count Up Animation
+        const stats = document.querySelectorAll('.stat-number');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const target = parseFloat(entry.target.getAttribute('data-target'));
+                    const duration = 2000;
+                    const step = target / (duration / 16);
+                    let current = 0;
+
+                    const update = () => {
+                        current += step;
+                        if (current < target) {
+                            entry.target.textContent = current.toFixed(target % 1 === 0 ? 0 : 1);
+                            requestAnimationFrame(update);
+                        } else {
+                            entry.target.textContent = target % 1 === 0 ? target : target.toFixed(1);
+                        }
+                    };
+                    update();
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.5 });
+
+        stats.forEach(stat => observer.observe(stat));
+    </script>
 </body>
 
 </html>

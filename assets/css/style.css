@@ -35,6 +35,40 @@
   --transition: 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
+/* Back to Top */
+.back-to-top {
+  position: fixed;
+  bottom: 32px;
+  inset-inline-end: 32px;
+  width: 48px;
+  height: 48px;
+  background-color: var(--color-primary);
+  color: #000;
+  border: none;
+  border-radius: 0; /* Keep industrial/sharp look */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 999;
+  opacity: 0;
+  visibility: hidden;
+  transition: var(--transition);
+  box-shadow: var(--shadow);
+  border: var(--border);
+}
+
+.back-to-top.show {
+  opacity: 1;
+  visibility: visible;
+}
+
+.back-to-top:hover {
+  transform: translateY(-4px);
+  background-color: var(--text-primary);
+  color: var(--bg-primary);
+}
+
 [data-theme="dark"] {
   --bg-primary: #000000;
   --bg-secondary: #111111;
