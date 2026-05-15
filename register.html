@@ -7,10 +7,20 @@
     <title>Register | SafeQueue</title>
     <script src="https://unpkg.com/@phosphor-icons/web"></script>
     <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/rtl.css">
     <link rel="icon" type="image/svg+xml" href="assets/images/favicon.svg">
 </head>
 
 <body style="overflow-y: auto;">
+    <div class="floating-toggles"
+        style="position: fixed; top: 24px; right: 24px; display: flex; gap: 12px; z-index: 1000;">
+        <button class="icon-btn theme-toggle"
+            style="width: 40px; height: 40px; border: var(--border); display: flex; align-items: center; justify-content: center; background: var(--bg-primary);"><i
+                class="ph ph-moon"></i></button>
+        <button class="icon-btn rtl-toggle"
+            style="width: 40px; height: 40px; border: var(--border); display: flex; align-items: center; justify-content: center; background: var(--bg-primary);"><i
+                class="ph ph-arrows-left-right"></i></button>
+    </div>
     <div class="auth-wrapper">
         <div class="auth-card">
             <div class="auth-header">

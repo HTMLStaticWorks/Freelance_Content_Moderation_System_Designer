@@ -107,10 +107,11 @@
         </div>
     </nav>
 
-    <!-- Mobile Drawer -->
     <div class="drawer-overlay"></div>
     <div class="drawer">
-        <button class="icon-btn drawer-close" style="align-self: flex-end;"><i class="ph ph-x"></i></button>
+        <button class="icon-btn drawer-close" style="align-self: flex-end;">
+            <i class="ph ph-x"></i>
+        </button>
         <div class="drawer-links">
             <a href="index.html" class="drawer-link">Home</a>
             <a href="home2.html" class="drawer-link active">Home 2</a>
@@ -122,7 +123,12 @@
             <a href="dashboard.html" class="drawer-link">Dashboard</a>
             <a href="login.html" class="btn btn-primary" style="margin-top: 24px; text-align: center;">Login</a>
         </div>
+        <div class="drawer-actions" style="margin-top: auto; display: flex; gap: 16px;">
+            <button class="icon-btn theme-toggle"><i class="ph ph-moon"></i></button>
+            <button class="icon-btn rtl-toggle"><i class="ph ph-arrows-left-right"></i></button>
+        </div>
     </div>
+
 
     <main>
         <!-- Split Hero Section -->
@@ -363,7 +369,7 @@
         </section>
 
         <!-- CTA -->
-        <section
+        <section class="cta-banner"
             style="text-align: center; border-top: var(--border); background-color: var(--color-primary); color: #000;">
             <div class="container">
                 <span class="font-mono" style="font-size: 0.75rem; letter-spacing: 0.15em;">[ READY_TO_DEPLOY ]</span>

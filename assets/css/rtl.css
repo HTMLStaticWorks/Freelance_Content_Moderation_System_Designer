@@ -29,3 +29,14 @@
   left: auto;
   right: 0;
 }
+
+[dir="rtl"] .floating-toggles {
+  right: auto !important;
+  left: 24px !important;
+}
+
+@media (max-width: 360px) {
+  [dir="rtl"] .floating-toggles {
+    left: 12px !important;
+  }
+}

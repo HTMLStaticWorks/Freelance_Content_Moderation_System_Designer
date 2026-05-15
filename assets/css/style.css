@@ -307,6 +307,17 @@ section {
   font-family: var(--font-display);
   font-size: 1.25rem;
   text-transform: uppercase;
+  color: var(--text-secondary);
+  transition: all 0.3s ease;
+  padding: 8px 0;
+  border-inline-start: 2px solid transparent;
+}
+
+.drawer-link:hover,
+.drawer-link.active {
+  color: var(--text-primary);
+  padding-inline-start: 16px;
+  border-inline-start: 2px solid var(--color-primary);
 }
 
 /* Cards */
@@ -643,6 +654,11 @@ section {
     font-size: 1.8rem !important;
   }
 
+  .split-hero-content .btn,
+  .cta-banner .btn {
+    width: 100%;
+  }
+
   .features-grid,
   .portfolio-grid,
   .process-grid,
@@ -663,6 +679,10 @@ section {
   .process-grid .process-image-card:nth-child(3) {
     grid-column: auto;
     width: 100%;
+  }
+
+  .single-page-main {
+    padding: 32px 0 !important;
   }
 
   .engagement-grid {

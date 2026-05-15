@@ -110,7 +110,6 @@ function initScrollHeader() {
     window.addEventListener('scroll', () => {
         if (window.scrollY > 50) {
             navbar.style.boxShadow = 'var(--shadow)';
-            navbar.style.backgroundColor = 'rgba(var(--bg-primary-rgb), 0.8)';
         } else {
             navbar.style.boxShadow = 'none';
         }
