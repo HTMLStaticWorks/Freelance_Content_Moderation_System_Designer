@@ -75,6 +75,46 @@
                 opacity: 0;
             }
         }
+
+        /* Real People, Real Impact Section Grid */
+        .impact-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+
+        .impact-grid>div {
+            text-align: center;
+        }
+
+        @media (max-width: 1024px) {
+            .impact-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .impact-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .impact-grid>div:nth-child(3) {
+                grid-column: 1 / span 2;
+                width: calc(50% - 12px);
+                margin-inline: auto;
+            }
+        }
+
+        @media (max-width: 360px) {
+            .impact-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .impact-grid>div:nth-child(3) {
+                grid-column: auto;
+                width: 100%;
+            }
+        }
     </style>
     <link rel="icon" type="image/svg+xml" href="assets/images/favicon.svg">
 </head>
@@ -381,7 +421,7 @@
                         whose safety depends on it being built right.</p>
                 </div>
 
-                <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px;">
+                <div class="impact-grid">
 
                     <div style="position: relative; overflow: hidden; border: var(--border); cursor: default;">
                         <img src="assets/images/impact-community.jpg" alt="Community Member"
@@ -423,7 +463,8 @@
                             <h4 style="margin-bottom: 10px;">The Moderator</h4>
                             <p style="font-size: 0.875rem; color: var(--text-secondary); line-height: 1.7;">They make
                                 hundreds of high-stakes decisions every day. A thoughtfully designed queue reduces their
-                                cognitive load, protects their mental health, and helps them make better, faster calls.
+                                cognitive load, protects their mental health, and helps them make better, faster calls
+                                and faster replies.
                             </p>
                         </div>
                     </div>
