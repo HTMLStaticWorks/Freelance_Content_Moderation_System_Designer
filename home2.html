@@ -132,10 +132,14 @@
 
     <main>
         <!-- Split Hero Section -->
-        <section class="split-hero">
-            <div class="split-hero-content">
-                <span class="font-mono" style="color: var(--color-accent);">[ SYSTEM_VERSION_4.0 ]</span>
-                <h1 style="font-size: clamp(2rem, 8vw, 3.5rem); margin: 24px 0;">Automated Governance. Human Oversight.
+        <section class="split-hero hero-grid-bg" style="position: relative;">
+            <div class="hero-corner-detail hero-corner-tl"></div>
+            <div class="hero-corner-detail hero-corner-tr"></div>
+            <div class="hero-corner-detail hero-corner-bl"></div>
+            <div class="hero-corner-detail hero-corner-br"></div>
+            <div class="split-hero-content" style="position: relative; z-index: 2;">
+                <span class="font-mono" style="color: var(--color-accent);">[ 6+ YRS_MODERATION_EXPERIENCE ]</span>
+                <h1 style="font-size: clamp(2rem, 8vw, 3.5rem); margin: 24px 0;">Your Platform's Safety. My Expertise.
                 </h1>
                 <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 32px; margin-bottom: 40px;">
                     <div>
@@ -148,11 +152,11 @@
                     </div>
                 </div>
                 <div style="display: flex; gap: 16px; flex-wrap: wrap; justify-content: center;">
-                    <a href="dashboard.html" class="btn btn-primary">Launch Dashboard</a>
-                    <a href="contact.html" class="btn btn-outline">Request Specs</a>
+                    <a href="dashboard.html" class="btn btn-primary">See My Dashboard</a>
+                    <a href="contact.html" class="btn btn-outline">Book a Call</a>
                 </div>
             </div>
-            <div class="split-hero-visual">
+            <div class="split-hero-visual" style="position: relative; z-index: 2;">
                 <div style="width: 100%; max-width: 500px;">
                     <div class="pipeline-container">
                         <div class="pipeline-path"></div>
@@ -322,16 +326,16 @@
             </div>
         </section>
 
-        <!-- How We Work -->
+        <!-- How I Work -->
         <section style="border-top: var(--border);">
             <div class="container">
                 <div class="section-header">
                     <span class="font-mono" style="color: var(--color-primary);">[ PROCESS_OVERVIEW ]</span>
-                    <h2 style="margin-top: 16px;">How We Work</h2>
-                    <p>A structured four-phase engagement model built for platform scale.</p>
+                    <h2 style="margin-top: 16px;">How I Work</h2>
+                    <p>A structured four-phase process I use with every client.</p>
                 </div>
 
-                <img src="assets/images/how-we-work.jpg" alt="How We Work"
+                <img src="assets/images/how-we-work.jpg" alt="How I Work"
                     style="width: 100%; height: 480px; object-fit: cover; border: var(--border); margin-bottom: 0;">
 
                 <div class="process-container">
@@ -367,7 +371,66 @@
                 </div>
             </div>
         </section>
+        <!-- Real People, Real Impact -->
+        <section style="border-top: var(--border);">
+            <div class="container">
+                <div style="max-width: 800px; margin: 0 auto; text-align: center; margin-bottom: 48px;">
+                    <span class="font-mono" style="color: var(--color-primary);">[ HUMAN_IMPACT ]</span>
+                    <h2 style="margin: 16px 0;">Real People. Real Impact.</h2>
+                    <p style="color: var(--text-secondary);">Behind every moderation system is a community of real users
+                        whose safety depends on it being built right.</p>
+                </div>
 
+                <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px;">
+
+                    <div style="position: relative; overflow: hidden; border: var(--border); cursor: default;">
+                        <img src="assets/images/impact-community.jpg" alt="Community Member"
+                            style="width: 100%; height: 380px; object-fit: cover; object-position: top; display: block; transition: transform 0.5s ease;">
+                        <div style="padding: 28px; border-top: var(--border); background-color: var(--bg-secondary);">
+                            <span class="font-mono"
+                                style="font-size: 0.65rem; color: var(--color-primary); display: block; margin-bottom: 8px;">//
+                                COMMUNITY_MEMBER</span>
+                            <h4 style="margin-bottom: 10px;">The Everyday User</h4>
+                            <p style="font-size: 0.875rem; color: var(--text-secondary); line-height: 1.7;">They just
+                                want a safe space to connect, share, and belong. A well-designed moderation system means
+                                they never have to see content that makes them feel unsafe — or lose their voice to a
+                                false positive.</p>
+                        </div>
+                    </div>
+
+                    <div style="position: relative; overflow: hidden; border: var(--border); cursor: default;">
+                        <img src="assets/images/impact-creator.jpg" alt="Content Creator"
+                            style="width: 100%; height: 380px; object-fit: cover; object-position: top; display: block; transition: transform 0.5s ease;">
+                        <div style="padding: 28px; border-top: var(--border); background-color: var(--bg-secondary);">
+                            <span class="font-mono"
+                                style="font-size: 0.65rem; color: var(--color-primary); display: block; margin-bottom: 8px;">//
+                                CONTENT_CREATOR</span>
+                            <h4 style="margin-bottom: 10px;">The Creator</h4>
+                            <p style="font-size: 0.875rem; color: var(--text-secondary); line-height: 1.7;">Their
+                                livelihood depends on a platform that protects them from harassment without wrongly
+                                flagging their content. Good moderation infrastructure is what keeps creators building —
+                                and earning.</p>
+                        </div>
+                    </div>
+
+                    <div style="position: relative; overflow: hidden; border: var(--border); cursor: default;">
+                        <img src="assets/images/impact-moderator.jpg" alt="Content Moderator"
+                            style="width: 100%; height: 380px; object-fit: cover; object-position: top; display: block; transition: transform 0.5s ease;">
+                        <div style="padding: 28px; border-top: var(--border); background-color: var(--bg-secondary);">
+                            <span class="font-mono"
+                                style="font-size: 0.65rem; color: var(--color-primary); display: block; margin-bottom: 8px;">//
+                                TRUST_&_SAFETY_REVIEWER</span>
+                            <h4 style="margin-bottom: 10px;">The Moderator</h4>
+                            <p style="font-size: 0.875rem; color: var(--text-secondary); line-height: 1.7;">They make
+                                hundreds of high-stakes decisions every day. A thoughtfully designed queue reduces their
+                                cognitive load, protects their mental health, and helps them make better, faster calls.
+                            </p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
         <!-- CTA -->
         <section class="cta-banner"
             style="text-align: center; border-top: var(--border); background-color: var(--color-primary); color: #000;">
@@ -378,11 +441,11 @@
                     Your moderation infrastructure is only as strong as its weakest queue. Let's find it together.
                 </p>
                 <p style="font-size: 0.875rem; max-width: 500px; margin: 0 auto 40px; opacity: 0.7;">
-                    We work with platform architects, trust & safety leads, and policy teams at companies handling 1M+
-                    daily content submissions.
+                    I work directly with platform architects, trust & safety leads, and policy teams at companies
+                    handling 1M+ daily content submissions.
                 </p>
                 <div style="display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;">
-                    <a href="contact.html" class="btn cta-btn">Connect with us</a>
+                    <a href="contact.html" class="btn cta-btn">Connect with me</a>
                     <a href="case-studies.html" class="btn"
                         style="background-color: transparent; border: 2px solid #000; color: #000; transition: background-color 0.3s ease, color 0.3s ease;"
                         onmouseover="this.style.backgroundColor='#000'; this.style.color='#fff';"
@@ -390,7 +453,7 @@
                         Studies</a>
                 </div>
                 <p class="font-mono" style="font-size: 0.65rem; margin-top: 40px; opacity: 0.5; letter-spacing: 0.1em;">
-                    SAFEQUEUE_INFRASTRUCTURE_GROUP // DISTRIBUTED_OPERATIONS // EST_2021</p>
+                    SAFEQUEUE // FREELANCE_SPECIALIST // EST_2026</p>
             </div>
         </section>
     </main>
@@ -405,7 +468,7 @@
                         SAFE<span>QUEUE</span>
                     </a>
                     <p style="color: var(--text-secondary); font-size: 0.875rem; margin-bottom: 24px;">
-                        Mission-critical infrastructure for the modern platform. Trust & Safety engineered for scale.
+                        Freelance content moderation specialist. Trust & Safety systems designed with precision.
                     </p>
                     <div style="display: flex; gap: 16px;">
                         <a href="#" class="icon-btn"><i class="ph ph-linkedin-logo"></i></a>
@@ -441,7 +504,7 @@
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2026 SAFEQUEUE INFRASTRUCTURE GROUP. ALL_RIGHTS_RESERVED.</p>
+                <p>&copy; 2026 SAFEQUEUE. ALL_RIGHTS_RESERVED.</p>
             </div>
         </div>
     </footer>

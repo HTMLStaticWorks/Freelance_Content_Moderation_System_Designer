@@ -104,10 +104,17 @@ h1,
 h2,
 h3,
 h4,
-.font-mono {
+h5,
+h6 {
   font-family: var(--font-display);
   text-transform: uppercase;
   letter-spacing: 0.05em;
+  font-weight: 500;
+}
+
+.font-mono {
+  font-family: var(--font-display);
+  font-weight: 500;
 }
 
 a {
@@ -131,7 +138,7 @@ button,
   border: none;
   outline: none;
   font-family: var(--font-display);
-  font-weight: 600;
+  font-weight: 500;
   padding: 12px 24px;
   border-radius: var(--radius);
   transition: var(--transition);
@@ -217,7 +224,7 @@ section {
 
 .logo {
   font-family: var(--font-display);
-  font-weight: 700;
+  font-weight: 500;
   font-size: 1.5rem;
   display: flex;
   align-items: center;
@@ -627,6 +634,10 @@ section {
   .process-grid {
     grid-template-columns: repeat(3, 1fr);
   }
+
+  .card img {
+    height: 240px !important;
+  }
 }
 
 @media (min-width: 1025px) {
@@ -855,7 +866,7 @@ section {
 .read-logs-link {
   color: var(--color-primary);
   font-family: var(--font-display);
-  font-weight: 600;
+  font-weight: 500;
   display: inline-flex;
   align-items: center;
   gap: 6px;
@@ -1020,7 +1031,7 @@ section {
 .stat-number {
   font-family: var(--font-display);
   font-size: 3.5rem;
-  font-weight: 700;
+  font-weight: 500;
   color: var(--color-primary);
   line-height: 1;
   margin-bottom: 12px;
@@ -1241,7 +1252,7 @@ section {
 .map-stat-number {
   font-family: var(--font-display);
   font-size: clamp(1.75rem, 5vw, 2.5rem);
-  font-weight: 700;
+  font-weight: 500;
   color: var(--color-primary);
   line-height: 1;
   margin-bottom: 8px;
@@ -1335,7 +1346,7 @@ section {
 .pricing-card .pricing-price {
   font-family: var(--font-display);
   font-size: 2rem;
-  font-weight: 700;
+  font-weight: 500;
   color: var(--color-primary);
   margin-top: 16px;
   transition: transform 0.3s ease;
@@ -1446,7 +1457,7 @@ section {
 .outcome-metric {
   font-family: var(--font-display);
   font-size: 2rem;
-  font-weight: 700;
+  font-weight: 500;
   color: var(--color-primary);
   transition: transform 0.3s ease;
 }
@@ -1576,3 +1587,144 @@ section {
   border-color: var(--color-primary);
   transform: translateY(-4px);
 }
+
+/* ==========================================================================
+   Hero & Page Header Infrastructure (Utilitarian/Industrial Tech Theme)
+   ========================================================================== */
+
+/* Technical Grid Background Utility */
+.hero-grid-bg {
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-grid-bg::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: 
+    linear-gradient(to right, var(--border) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--border) 1px, transparent 1px);
+  background-size: 50px 50px;
+  background-position: center;
+  opacity: 0.15;
+  pointer-events: none;
+  z-index: 1;
+}
+
+[data-theme="dark"] .hero-grid-bg::before {
+  opacity: 0.25;
+}
+
+/* Inner Page Header Hero */
+.page-header {
+  background-color: var(--bg-secondary) !important;
+  border-bottom: var(--border);
+  padding: 100px 0 80px 0;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.page-header-content {
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: center;
+  position: relative;
+  z-index: 2;
+  padding: 0 24px;
+}
+
+/* Data Tech Details for Page Header */
+.page-header-tech-left,
+.page-header-tech-right {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  font-family: var(--font-display);
+  font-size: 0.7rem;
+  color: var(--text-secondary);
+  opacity: 0.6;
+  letter-spacing: 0.15em;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  pointer-events: none;
+  z-index: 2;
+  user-select: none;
+}
+
+.page-header-tech-left {
+  left: 48px;
+  align-items: flex-start;
+  text-align: left;
+}
+
+.page-header-tech-right {
+  right: 48px;
+  align-items: flex-end;
+  text-align: right;
+}
+
+.page-header-tech-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.page-header-tech-item::before {
+  content: '::';
+  color: var(--color-primary);
+}
+
+@media (max-width: 1100px) {
+  .page-header-tech-left,
+  .page-header-tech-right {
+    display: none;
+  }
+}
+
+.page-header-tag {
+  color: var(--color-primary);
+  font-family: var(--font-display);
+  display: inline-block;
+  margin-bottom: 18px;
+  font-size: 0.875rem;
+  letter-spacing: 0.1em;
+}
+
+.page-header-title {
+  font-size: clamp(2rem, 6vw, 3.25rem);
+  line-height: 1.15;
+  margin-bottom: 20px;
+  font-weight: 500;
+  text-transform: uppercase;
+}
+
+.page-header-desc {
+  font-size: clamp(1rem, 3.5vw, 1.2rem);
+  color: var(--text-secondary);
+  max-width: 650px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+/* Main Hero Grid lines overlay details */
+.hero-corner-detail {
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  border: 2px solid var(--color-primary);
+  pointer-events: none;
+  z-index: 3;
+}
+
+.hero-corner-tl { top: 24px; left: 24px; border-right: none; border-bottom: none; }
+.hero-corner-tr { top: 24px; right: 24px; border-left: none; border-bottom: none; }
+.hero-corner-bl { bottom: 24px; left: 24px; border-right: none; border-top: none; }
+.hero-corner-br { bottom: 24px; right: 24px; border-left: none; border-top: none; }
