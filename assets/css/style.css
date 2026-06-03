@@ -419,6 +419,14 @@ section {
   color: var(--text-secondary);
 }
 
+.card img {
+  transition: transform var(--transition);
+}
+
+.card:hover img {
+  transform: scale(1.05);
+}
+
 /* Footer */
 .footer {
   background-color: var(--bg-primary);
