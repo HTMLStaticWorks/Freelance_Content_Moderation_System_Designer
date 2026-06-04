@@ -40,3 +40,26 @@
     left: 12px !important;
   }
 }
+
+@media (max-width: 768px) {
+  [dir="rtl"] .footer-grid {
+    text-align: right;
+  }
+}
+
+@media (max-width: 360px) {
+  [dir="rtl"] .footer-grid {
+    text-align: center;
+  }
+  [dir="rtl"] .footer-links {
+    align-items: center;
+  }
+  [dir="rtl"] .logo {
+    justify-content: center;
+  }
+  [dir="rtl"] .footer-col > div {
+    justify-content: center !important;
+  }
+}
+
+
